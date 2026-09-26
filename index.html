@@ -1,14 +1,21 @@
 <!doctype html>
 <html lang="ps" dir="rtl">
+
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>صدیق الله پاڅون | پاڅون موبایل</title>
 
-<meta name="description" content="صدیق الله پاڅون - پاڅون موبایل، زابل مرکز، قلات ښار، صرافانو کوڅه، اول نمبر دوکان">
+<meta name="description"
+content="صدیق الله پاڅون - پاڅون موبایل، زابل مرکز، قلات ښار، صرافانو کوڅه، اول نمبر دوکان">
 
 <style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700;800&display=swap');
 
 :root{
@@ -17,10 +24,10 @@
     --card:#101314;
     --card2:#151819;
     --gold:#ffd21c;
-    --gold2:#ffb800;
-    --white:#ffffff;
-    --text:#eeeeee;
-    --muted:#a8abad;
+    --gold2:#ffb300;
+    --white:#fff;
+    --text:#eee;
+    --muted:#a7aaad;
     --border:rgba(255,255,255,.09);
     --shadow:0 15px 45px rgba(0,0,0,.55);
 }
@@ -36,9 +43,15 @@ html{
 }
 
 body{
+    margin:0;
     background:
-        radial-gradient(circle at 50% -10%,rgba(255,210,28,.12),transparent 35%),
-        var(--bg);
+    radial-gradient(
+        circle at 50% -10%,
+        rgba(255,210,28,.13),
+        transparent 35%
+    ),
+    var(--bg);
+
     color:var(--white);
     font-family:'Noto Naskh Arabic',Tahoma,sans-serif;
     line-height:1.9;
@@ -49,17 +62,19 @@ body::before{
     content:"";
     position:fixed;
     inset:0;
-    pointer-events:none;
-    background-image:
-        linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
-    background-size:45px 45px;
     z-index:-1;
+    pointer-events:none;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+
+    background-size:45px 45px;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
 }
 
 button{
@@ -71,26 +86,33 @@ button{
     margin:auto;
 }
 
-/* =========================
+
+/* =====================================================
    NAVBAR
-========================= */
+===================================================== */
 
 nav{
-    height:72px;
     position:fixed;
     top:0;
-    right:0;
     left:0;
+    right:0;
+
+    height:72px;
+
     z-index:1000;
-    background:rgba(3,4,5,.86);
+
+    background:rgba(3,4,5,.88);
     backdrop-filter:blur(18px);
     -webkit-backdrop-filter:blur(18px);
+
     border-bottom:1px solid rgba(255,210,28,.22);
+
     box-shadow:0 8px 30px rgba(0,0,0,.35);
 }
 
 .navin{
     height:100%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -100,8 +122,11 @@ nav{
     color:var(--gold);
     font-size:24px;
     font-weight:800;
-    text-shadow:0 0 20px rgba(255,210,28,.2);
+
     transition:.3s;
+
+    text-shadow:
+    0 0 20px rgba(255,210,28,.22);
 }
 
 .brand:hover{
@@ -111,14 +136,17 @@ nav{
 .links{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:6px;
 }
 
 .links a{
-    padding:8px 15px;
-    border-radius:12px;
+    padding:8px 14px;
+    border-radius:13px;
+
     color:#eee;
+
     font-size:16px;
+
     transition:.3s;
 }
 
@@ -129,108 +157,140 @@ nav{
 
 .hamb{
     display:none;
+
     border:0;
     background:none;
+
     color:white;
     font-size:29px;
+
     cursor:pointer;
 }
 
-/* =========================
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
     min-height:920px;
+
     padding-top:72px;
+
     position:relative;
+
     text-align:center;
+
     overflow:hidden;
 
     background:
-        linear-gradient(
-            to bottom,
-            rgba(0,0,0,.15) 0%,
-            rgba(0,0,0,.38) 35%,
-            rgba(3,4,5,.88) 72%,
-            #030405 100%
-        ),
-        url('https://i.ibb.co/3nX4NhL/image.png') center top/cover no-repeat;
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.12),
+        rgba(0,0,0,.38) 35%,
+        rgba(3,4,5,.90) 73%,
+        #030405 100%
+    ),
+    url('https://i.ibb.co/3nX4NhL/image.png')
+    center top/cover no-repeat;
 }
 
 .hero::before{
     content:"";
+
     position:absolute;
     inset:0;
+
     background:
-        radial-gradient(circle at center 42%,transparent 0,rgba(0,0,0,.25) 50%,rgba(0,0,0,.7) 100%);
+    radial-gradient(
+        circle at center 42%,
+        transparent,
+        rgba(0,0,0,.65)
+    );
 }
 
 .hero::after{
     content:"";
+
     position:absolute;
+
     bottom:-100px;
     left:-5%;
+
     width:110%;
     height:190px;
+
     background:var(--bg);
+
     border-top:3px solid var(--gold);
+
     border-radius:50% 50% 0 0/55% 55% 0 0;
-    box-shadow:0 -10px 40px rgba(255,210,28,.08);
 }
 
 .hero-in{
     position:relative;
+
     z-index:3;
+
     padding-top:390px;
 }
 
 .profile{
     width:190px;
     height:190px;
+
     border-radius:50%;
+
     object-fit:cover;
 
     border:8px solid #050505;
+
     outline:5px solid var(--gold);
 
     box-shadow:
-        0 0 0 12px rgba(255,210,28,.08),
-        0 0 45px rgba(255,210,28,.35);
+    0 0 0 12px rgba(255,210,28,.08),
+    0 0 50px rgba(255,210,28,.4);
 
     transition:.5s;
+
+    cursor:pointer;
 }
 
 .profile:hover{
-    transform:scale(1.04);
-    box-shadow:
-        0 0 0 15px rgba(255,210,28,.08),
-        0 0 60px rgba(255,210,28,.5);
+    transform:scale(1.05);
 }
 
 h1{
     margin-top:25px;
+
     color:var(--gold);
+
     font-size:clamp(40px,7vw,70px);
+
     font-weight:800;
+
     line-height:1.35;
+
     text-shadow:
-        0 3px 20px rgba(0,0,0,.8),
-        0 0 30px rgba(255,210,28,.22);
+    0 3px 20px #000,
+    0 0 30px rgba(255,210,28,.25);
 }
 
 .sub{
     color:#eee;
     font-size:21px;
-    margin-top:2px;
 }
 
 .line{
     width:420px;
     max-width:80%;
+
     height:2px;
+
     margin:12px auto 22px;
-    background:linear-gradient(
+
+    background:
+    linear-gradient(
         90deg,
         transparent,
         var(--gold),
@@ -238,15 +298,18 @@ h1{
     );
 }
 
-/* =========================
+
+/* =====================================================
    STATS
-========================= */
+===================================================== */
 
 .stats{
     display:flex;
+
     justify-content:center;
-    align-items:center;
+
     gap:60px;
+
     flex-wrap:wrap;
 }
 
@@ -256,7 +319,7 @@ h1{
 
 .stat b{
     display:block;
-    color:white;
+
     font-size:23px;
 }
 
@@ -265,14 +328,18 @@ h1{
     font-size:14px;
 }
 
-/* =========================
+
+/* =====================================================
    BIO
-========================= */
+===================================================== */
 
 .bio{
     max-width:750px;
-    margin:15px auto 0;
+
+    margin:15px auto;
+
     color:#ddd;
+
     font-size:17px;
 }
 
@@ -280,9 +347,10 @@ h1{
     color:var(--gold);
 }
 
-/* =========================
+
+/* =====================================================
    PEOPLE
-========================= */
+===================================================== */
 
 .people{
     margin-top:15px;
@@ -291,40 +359,62 @@ h1{
 .people img{
     width:50px;
     height:50px;
+
     border-radius:50%;
+
     object-fit:cover;
 
     border:3px solid var(--gold);
+
     margin-right:-12px;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.5);
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-/* =========================
+.people img:hover{
+    transform:scale(1.1);
+}
+
+
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 .actions{
     display:flex;
+
     justify-content:center;
+
     gap:14px;
+
     flex-wrap:wrap;
+
     margin:25px 0 70px;
 }
 
 .btn{
     min-width:220px;
+
     padding:11px 25px;
+
     border-radius:15px;
+
     border:1px solid var(--gold);
+
     font-size:18px;
+
     font-weight:700;
+
     transition:.3s;
 }
 
 .btn:hover{
     transform:translateY(-4px);
-    box-shadow:0 12px 30px rgba(255,210,28,.18);
+
+    box-shadow:
+    0 12px 30px rgba(255,210,28,.18);
 }
 
 .gold{
@@ -337,107 +427,342 @@ h1{
     color:white;
 }
 
-/* =========================
+
+/* =====================================================
    TABS
-========================= */
+===================================================== */
 
 .tabs{
     position:relative;
-    z-index:5;
-    border-top:1px solid rgba(255,255,255,.07);
-    border-bottom:1px solid rgba(255,210,28,.2);
-    background:rgba(3,4,5,.94);
+
+    z-index:10;
+
+    background:rgba(3,4,5,.95);
+
     backdrop-filter:blur(12px);
+
+    border-top:1px solid rgba(255,255,255,.07);
+
+    border-bottom:1px solid rgba(255,210,28,.2);
 }
 
 .tabsin{
     display:flex;
+
     justify-content:center;
+
     align-items:center;
-    gap:12px;
+
+    gap:8px;
+
+    overflow-x:auto;
 }
 
 .tab{
-    padding:10px 25px;
+    padding:10px 20px;
+
     color:#bbb;
+
     font-size:17px;
+
     border-radius:30px;
+
     transition:.3s;
+
+    white-space:nowrap;
 }
 
 .tab:hover{
     color:var(--gold);
 }
 
-.selected{
-    color:#111 !important;
+.tab.selected{
     background:var(--gold);
+
+    color:#111;
+
     font-weight:800;
-    margin:6px 0;
-    box-shadow:0 5px 20px rgba(255,210,28,.15);
+
+    box-shadow:
+    0 5px 20px rgba(255,210,28,.15);
 }
 
-/* =========================
-   SECTIONS
-========================= */
 
-section{
-    padding:85px 0;
-}
+/* =====================================================
+   PRODUCTS BUTTON
+===================================================== */
 
-.title{
+.products-button-area{
     text-align:center;
-    margin-bottom:38px;
+
+    padding:35px 0 10px;
+
+    background:#030405;
 }
 
-.title h2{
-    color:var(--gold);
-    font-size:36px;
+.products-button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    padding:14px 34px;
+
+    border-radius:17px;
+
+    border:2px solid var(--gold);
+
+    background:
+    linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold2)
+    );
+
+    color:#111;
+
+    font-size:20px;
+
     font-weight:800;
-    margin-bottom:5px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 35px rgba(255,210,28,.18);
+
+    transition:.35s;
 }
 
-.title p{
-    color:var(--muted);
-    font-size:16px;
+.products-button:hover{
+    transform:
+    translateY(-4px)
+    scale(1.02);
+
+    box-shadow:
+    0 15px 45px rgba(255,210,28,.30);
 }
 
-/* =========================
+.products-button .arrow{
+    transition:.35s;
+}
+
+.products-button.active .arrow{
+    transform:rotate(180deg);
+}
+
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products{
+    display:none;
+
+    background:
+    radial-gradient(
+        circle at 50% 0%,
+        rgba(255,210,28,.10),
+        transparent 45%
+    ),
+    #050707;
+
+    border-top:1px solid rgba(255,210,28,.12);
+
+    border-bottom:1px solid rgba(255,255,255,.04);
+}
+
+.products.show{
+    display:block;
+
+    animation:
+    productsIn .5s ease;
+}
+
+@keyframes productsIn{
+
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.product-grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:20px;
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.product-card{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #171a1b,
+        #080909
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.45);
+
+    transition:.4s;
+
+    cursor:pointer;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+
+    border-color:
+    rgba(255,210,28,.55);
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.65),
+    0 0 25px rgba(255,210,28,.08);
+}
+
+.product-image{
+    height:255px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#111;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.product-card:hover
+.product-image img{
+    transform:scale(1.10);
+}
+
+.product-image::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.65),
+        transparent 55%
+    );
+
+    pointer-events:none;
+}
+
+.product-tag{
+    position:absolute;
+
+    top:12px;
+    right:12px;
+
+    z-index:3;
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    background:rgba(0,0,0,.78);
+
+    color:var(--gold);
+
+    border:1px solid rgba(255,210,28,.45);
+
+    font-size:13px;
+}
+
+.product-info{
+    padding:17px;
+
+    text-align:center;
+}
+
+.product-info h3{
+    color:var(--gold);
+
+    font-size:21px;
+
+    margin-bottom:3px;
+}
+
+.product-info p{
+    color:#aaa;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
    GALLERY
-========================= */
+===================================================== */
 
 .gallery{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(3,1fr);
+
     gap:18px;
 }
 
 .item{
     height:420px;
-    border-radius:20px;
-    overflow:hidden;
-    position:relative;
-    background:#111;
-    border:1px solid var(--border);
-    box-shadow:var(--shadow);
-}
 
-.item::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,.6),
-        transparent 45%
-    );
-    pointer-events:none;
+    border-radius:20px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:#111;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    cursor:pointer;
 }
 
 .item img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     transition:.6s;
 }
 
@@ -445,187 +770,422 @@ section{
     transform:scale(1.08);
 }
 
+.item::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.6),
+        transparent 50%
+    );
+
+    pointer-events:none;
+}
+
 .pin{
     position:absolute;
+
     top:12px;
     right:12px;
+
     z-index:3;
 
     width:43px;
     height:43px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     border-radius:50%;
+
     background:rgba(0,0,0,.72);
+
     border:1px solid rgba(255,210,28,.5);
 }
 
 .views{
     position:absolute;
-    z-index:3;
+
     bottom:13px;
     right:13px;
 
+    z-index:3;
+
     padding:3px 12px;
+
     border-radius:12px;
 
     background:rgba(0,0,0,.75);
-    color:white;
+
     font-size:14px;
 }
 
-/* =========================
+
+/* =====================================================
    ABOUT
-========================= */
+===================================================== */
+
+section{
+    padding:85px 0;
+}
+
+.title{
+    text-align:center;
+
+    margin-bottom:38px;
+}
+
+.title h2{
+    color:var(--gold);
+
+    font-size:36px;
+
+    font-weight:800;
+
+    margin-bottom:5px;
+}
+
+.title p{
+    color:var(--muted);
+
+    font-size:16px;
+}
 
 .about{
     background:
-        radial-gradient(circle at 20% 20%,rgba(255,210,28,.06),transparent 35%),
-        #080a0b;
-    border-top:1px solid rgba(255,255,255,.04);
-    border-bottom:1px solid rgba(255,255,255,.04);
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(255,210,28,.06),
+        transparent 35%
+    ),
+    #080a0b;
+
+    border-top:
+    1px solid rgba(255,255,255,.04);
 }
 
 .cards{
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+    1fr 1fr;
+
     gap:20px;
 }
 
 .card{
     background:
-        linear-gradient(145deg,#151819,#080a0b);
+    linear-gradient(
+        145deg,
+        #151819,
+        #080a0b
+    );
+
     border:1px solid var(--border);
+
     border-radius:23px;
+
     padding:30px;
 
     box-shadow:var(--shadow);
+
     transition:.35s;
 }
 
 .card:hover{
     transform:translateY(-5px);
-    border-color:rgba(255,210,28,.35);
+
+    border-color:
+    rgba(255,210,28,.35);
 }
 
 .card h3{
     color:var(--gold);
+
     font-size:25px;
+
     margin-bottom:12px;
 }
 
 .card p{
     color:#ddd;
+
     font-size:17px;
 }
 
 .list div{
     padding:11px 5px;
-    border-bottom:1px solid rgba(255,255,255,.08);
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
+
     color:#ddd;
 }
 
-.list div:last-child{
-    border-bottom:0;
-}
 
-/* =========================
+/* =====================================================
    ADDRESS
-========================= */
+===================================================== */
 
 .address-box{
     margin-top:25px;
+
     padding:20px;
+
     border-radius:18px;
 
-    background:rgba(255,210,28,.055);
-    border:1px solid rgba(255,210,28,.2);
-
     text-align:center;
+
+    background:
+    rgba(255,210,28,.055);
+
+    border:
+    1px solid rgba(255,210,28,.2);
 }
 
-.address-box .address-icon{
+.address-icon{
     font-size:34px;
 }
 
 .address-box strong{
     display:block;
+
     color:var(--gold);
+
     font-size:20px;
-    margin-top:4px;
 }
 
 .address-box span{
     color:#ccc;
+
     font-size:16px;
 }
 
-/* =========================
+
+/* =====================================================
    CONTACT
-========================= */
+===================================================== */
 
 .contact{
     background:
-        radial-gradient(
-            circle at top,
-            rgba(255,210,28,.08),
-            transparent 50%
-        ),
-        #060808;
+    radial-gradient(
+        circle at top,
+        rgba(255,210,28,.08),
+        transparent 50%
+    ),
+    #060808;
 
-    border-top:1px solid rgba(255,210,28,.15);
+    border-top:
+    1px solid rgba(255,210,28,.15);
 }
 
 .contactgrid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    border:1px solid var(--border);
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    border:
+    1px solid var(--border);
+
     border-radius:22px;
+
     overflow:hidden;
-    background:rgba(255,255,255,.015);
 }
 
 .contactitem{
     text-align:center;
+
     padding:28px 12px;
-    border-left:1px solid var(--border);
+
+    border-left:
+    1px solid var(--border);
+
     transition:.3s;
 }
 
-.contactitem:last-child{
-    border-left:0;
-}
-
 .contactitem:hover{
-    background:rgba(255,210,28,.045);
+    background:
+    rgba(255,210,28,.045);
 }
 
 .ico{
     font-size:34px;
+
     color:var(--gold);
-    margin-bottom:5px;
 }
 
 .contactitem b{
     display:block;
-    color:white;
+
     font-size:18px;
 }
 
 .contactitem span{
     color:var(--muted);
+
     font-size:14px;
 }
 
-/* =========================
+
+/* =====================================================
+   WEBSITE DEVELOPER
+===================================================== */
+
+.developer{
+    padding:80px 0;
+
+    background:
+    radial-gradient(
+        circle at center,
+        rgba(255,210,28,.08),
+        transparent 50%
+    ),
+    #050607;
+
+    border-top:
+    1px solid rgba(255,210,28,.16);
+}
+
+.developer-card{
+    max-width:850px;
+
+    margin:auto;
+
+    text-align:center;
+
+    padding:40px 25px;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #151819,
+        #080909
+    );
+
+    border:
+    1px solid rgba(255,210,28,.22);
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.55);
+}
+
+.developer-icon{
+    width:90px;
+    height:90px;
+
+    margin:0 auto 18px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    color:#111;
+
+    font-size:43px;
+
+    box-shadow:
+    0 0 35px rgba(255,210,28,.2);
+}
+
+.developer-card h2{
+    color:var(--gold);
+
+    font-size:32px;
+
+    margin-bottom:5px;
+}
+
+.developer-card h3{
+    color:white;
+
+    font-size:24px;
+
+    margin-bottom:10px;
+}
+
+.developer-card p{
+    color:#aaa;
+
+    font-size:16px;
+
+    margin-bottom:20px;
+}
+
+.developer-buttons{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+}
+
+.dev-btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    min-width:220px;
+
+    padding:11px 20px;
+
+    border-radius:14px;
+
+    border:1px solid var(--gold);
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.dev-btn:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 30px rgba(255,210,28,.15);
+}
+
+.dev-whatsapp{
+    background:var(--gold);
+
+    color:#111;
+}
+
+.dev-site{
+    background:#101213;
+
+    color:white;
+}
+
+
+/* =====================================================
    SOCIAL
-========================= */
+===================================================== */
 
 .social{
     text-align:center;
+
     margin-top:30px;
 }
 
@@ -635,50 +1195,63 @@ section{
     width:52px;
     height:52px;
 
-    border-radius:50%;
-
     align-items:center;
     justify-content:center;
 
+    border-radius:50%;
+
     background:var(--gold);
+
     color:#111;
 
     margin:5px;
 
     font-size:22px;
+
     font-weight:800;
 
     transition:.3s;
 }
 
 .social a:hover{
-    transform:translateY(-5px) scale(1.05);
-    box-shadow:0 10px 25px rgba(255,210,28,.2);
+    transform:
+    translateY(-5px)
+    scale(1.05);
 }
 
-/* =========================
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
     text-align:center;
-    padding:28px 15px;
+
+    padding:30px 15px;
+
     color:#777;
-    border-top:1px solid rgba(255,255,255,.07);
+
+    border-top:
+    1px solid rgba(255,255,255,.07);
+
+    line-height:2;
 }
 
 footer strong{
     color:var(--gold);
 }
 
-/* =========================
+
+/* =====================================================
    TOP BUTTON
-========================= */
+===================================================== */
 
 .top{
     position:fixed;
+
     bottom:20px;
     left:20px;
+
     z-index:999;
 
     width:52px;
@@ -687,51 +1260,175 @@ footer strong{
     border-radius:50%;
 
     border:1px solid var(--gold);
-    background:rgba(15,16,17,.9);
+
+    background:rgba(15,16,17,.92);
+
     color:var(--gold);
 
     font-size:25px;
+
     cursor:pointer;
 
-    box-shadow:0 8px 25px rgba(0,0,0,.5);
     transition:.3s;
 }
 
 .top:hover{
     background:var(--gold);
+
     color:#111;
+
     transform:translateY(-4px);
 }
 
-/* =========================
+
+/* =====================================================
+   IMAGE LIGHTBOX
+===================================================== */
+
+.lightbox{
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:
+    rgba(0,0,0,.94);
+
+    backdrop-filter:blur(12px);
+}
+
+.lightbox.show{
+    display:flex;
+
+    animation:
+    lightboxIn .25s ease;
+}
+
+@keyframes lightboxIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+.lightbox img{
+    max-width:94vw;
+    max-height:88vh;
+
+    object-fit:contain;
+
+    border-radius:15px;
+
+    border:2px solid var(--gold);
+
+    box-shadow:
+    0 0 60px rgba(255,210,28,.18);
+
+    animation:
+    imageZoom .3s ease;
+}
+
+@keyframes imageZoom{
+
+    from{
+        transform:scale(.85);
+    }
+
+    to{
+        transform:scale(1);
+    }
+
+}
+
+.close-lightbox{
+    position:absolute;
+
+    top:20px;
+    left:25px;
+
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+
+    border:2px solid var(--gold);
+
+    background:#111;
+
+    color:var(--gold);
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    z-index:3;
+
+    transition:.3s;
+}
+
+.close-lightbox:hover{
+    background:var(--gold);
+
+    color:#111;
+
+    transform:rotate(90deg);
+}
+
+.lightbox-title{
+    position:absolute;
+
+    bottom:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:white;
+
+    background:rgba(0,0,0,.7);
+
+    padding:5px 18px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,210,28,.4);
+
+    font-size:15px;
+}
+
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
-@media(max-width:800px){
-
-    nav{
-        height:65px;
-    }
-
-    .brand{
-        font-size:19px;
-    }
+@media(max-width:900px){
 
     .links{
         display:none;
 
         position:absolute;
-        top:65px;
+
+        top:72px;
         right:0;
         left:0;
 
-        background:rgba(5,6,7,.98);
+        background:#070808;
+
         padding:12px;
 
         flex-direction:column;
-        gap:3px;
-
-        border-bottom:1px solid rgba(255,210,28,.2);
     }
 
     .links.open{
@@ -740,17 +1437,20 @@ footer strong{
 
     .links a{
         width:100%;
+
         text-align:center;
-        padding:9px;
     }
 
     .hamb{
         display:block;
     }
 
+    .brand{
+        font-size:19px;
+    }
+
     .hero{
-        min-height:880px;
-        padding-top:65px;
+        min-height:870px;
     }
 
     .hero-in{
@@ -763,44 +1463,29 @@ footer strong{
     }
 
     h1{
-        font-size:37px;
-        margin-top:20px;
+        font-size:38px;
     }
 
-    .sub{
-        font-size:18px;
+    .product-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:13px;
     }
 
-    .stats{
-        gap:22px;
-    }
-
-    .stat b{
-        font-size:20px;
-    }
-
-    .bio{
-        font-size:15px;
-        padding:0 10px;
-    }
-
-    .actions{
-        margin-bottom:60px;
-    }
-
-    .btn{
-        width:90%;
-        min-width:0;
+    .product-image{
+        height:220px;
     }
 
     .gallery{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+        repeat(2,1fr);
+
         gap:10px;
     }
 
     .item{
         height:270px;
-        border-radius:14px;
     }
 
     .cards{
@@ -808,34 +1493,24 @@ footer strong{
     }
 
     .contactgrid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .contactitem{
-        border-bottom:1px solid var(--border);
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     section{
         padding:65px 0;
     }
 
-    .title h2{
-        font-size:30px;
+    .developer{
+        padding:60px 0;
     }
 
-    .tabsin{
-        gap:4px;
-    }
-
-    .tab{
-        padding:9px 15px;
-        font-size:15px;
-    }
 }
 
-/* =========================
-   SMALL PHONES
-========================= */
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
 
 @media(max-width:450px){
 
@@ -854,20 +1529,14 @@ footer strong{
     .profile{
         width:130px;
         height:130px;
-        border-width:6px;
-        outline-width:4px;
     }
 
     h1{
         font-size:32px;
     }
 
-    .line{
-        max-width:75%;
-    }
-
     .stats{
-        gap:13px;
+        gap:14px;
     }
 
     .stat{
@@ -882,28 +1551,46 @@ footer strong{
         font-size:12px;
     }
 
-    .people img{
-        width:43px;
-        height:43px;
+    .btn{
+        width:90%;
+    }
+
+    .product-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:10px;
+    }
+
+    .product-image{
+        height:175px;
+    }
+
+    .product-info{
+        padding:11px 5px;
+    }
+
+    .product-info h3{
+        font-size:15px;
+    }
+
+    .product-info p{
+        font-size:11px;
+    }
+
+    .product-tag{
+        font-size:10px;
+
+        padding:3px 7px;
     }
 
     .gallery{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:
+        repeat(2,1fr);
     }
 
     .item{
         height:220px;
-    }
-
-    .pin{
-        width:35px;
-        height:35px;
-        font-size:19px;
-    }
-
-    .views{
-        font-size:11px;
-        padding:2px 7px;
     }
 
     .contactitem{
@@ -911,11 +1598,11 @@ footer strong{
     }
 
     .contactitem b{
-        font-size:15px;
+        font-size:14px;
     }
 
     .contactitem span{
-        font-size:12px;
+        font-size:11px;
     }
 
     .address-box strong{
@@ -923,60 +1610,134 @@ footer strong{
     }
 
     .address-box span{
-        font-size:14px;
+        font-size:13px;
     }
+
+    .developer-card{
+        padding:30px 15px;
+    }
+
+    .developer-card h2{
+        font-size:27px;
+    }
+
+    .developer-card h3{
+        font-size:21px;
+    }
+
+    .dev-btn{
+        width:100%;
+        min-width:0;
+    }
+
+    .lightbox{
+        padding:10px;
+    }
+
+    .lightbox img{
+        max-width:96vw;
+        max-height:80vh;
+    }
+
+    .close-lightbox{
+        top:12px;
+        left:12px;
+
+        width:45px;
+        height:45px;
+
+        font-size:25px;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      NAVIGATION
-========================= -->
+===================================================== -->
 
 <nav>
+
 <div class="wrap navin">
 
 <a class="brand" href="#home">
 📱 صدیق الله پاڅون
 </a>
 
+
 <div class="links" id="links">
-<a href="#home">🏠 صفحه اصلي</a>
-<a href="#about">ℹ️ زموږ په اړه</a>
-<a href="#gallery">🖼️ عکسونه</a>
-<a href="#contact">📞 اړیکه</a>
+
+<a href="#home">
+🏠 صفحه اصلي
+</a>
+
+<a href="#productsButton">
+🛍️ محصولات
+</a>
+
+<a href="#about">
+ℹ️ زموږ په اړه
+</a>
+
+<a href="#gallery">
+🖼️ عکسونه
+</a>
+
+<a href="#contact">
+📞 اړیکه
+</a>
+
 </div>
 
-<button class="hamb" onclick="document.getElementById('links').classList.toggle('open')">
+
+<button
+class="hamb"
+onclick="toggleMenu()">
+
 ☰
+
 </button>
 
 </div>
+
 </nav>
 
 
-<!-- =========================
+
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <header class="hero" id="home">
 
 <div class="wrap hero-in">
 
-<img
-class="profile"
-src="https://i.ibb.co/w8jbM47/Whats-App-Image-2026-09-26-at-1-55-47-PM.jpg"
-alt="صدیق الله پاڅون">
 
-<h1>صدیق الله پاڅون</h1>
+<img
+class="profile zoom-image"
+src="https://i.ibb.co/w8jbM47/Whats-App-Image-2026-09-26-at-1-55-47-PM.jpg"
+alt="صدیق الله پاڅون"
+data-title="صدیق الله پاڅون">
+
+
+<h1>
+صدیق الله پاڅون
+</h1>
+
 
 <div class="sub">
-سازنده دیجیتال
+📱 پاڅون موبایل
 </div>
 
+
 <div class="line"></div>
+
 
 <div class="stats">
 
@@ -997,20 +1758,43 @@ alt="صدیق الله پاڅون">
 
 </div>
 
+
 <div class="bio">
-<strong>پاڅون موبایل</strong>
+
+<strong>
+پاڅون موبایل
+</strong>
+
 <br>
-د موبایلونو، لوازمو او ډیجیټل وسایلو په برخه کې
-د ښه خدمت لپاره ستاسو سره یو ځای یو.
+
+د موبایلونو، لوازمو او ډیجیټل وسایلو
+په برخه کې ستاسو لپاره ښه خدمت وړاندې کوو.
+
 </div>
+
 
 <div class="people">
 
-<img src="https://i.ibb.co/3nX4NhL/image.png" alt="عکس">
-<img src="https://i.ibb.co/qLb3bnyN/Whats-App-Image-2026-09-26-at-1-55-46-PM-1.jpg" alt="عکس">
-<img src="https://i.ibb.co/w8jbM47/Whats-App-Image-2026-09-26-at-1-55-47-PM.jpg" alt="عکس">
+<img
+class="zoom-image"
+src="https://i.ibb.co/3nX4NhL/image.png"
+alt="پاڅون موبایل"
+data-title="پاڅون موبایل">
+
+<img
+class="zoom-image"
+src="https://i.ibb.co/qLb3bnyN/Whats-App-Image-2026-09-26-at-1-55-46-PM-1.jpg"
+alt="موبایل"
+data-title="پاڅون موبایل">
+
+<img
+class="zoom-image"
+src="https://i.ibb.co/w8jbM47/Whats-App-Image-2026-09-26-at-1-55-47-PM.jpg"
+alt="صدیق الله پاڅون"
+data-title="صدیق الله پاڅون">
 
 </div>
+
 
 <div class="actions">
 
@@ -1018,35 +1802,47 @@ alt="صدیق الله پاڅون">
 class="btn gold"
 href="https://www.facebook.com/share/1BnosgHgCD/"
 target="_blank">
+
 📘 فیسبوک پاڼه
+
 </a>
+
 
 <a
 class="btn dark"
 href="tel:0708782308">
+
 📞 تماس ونیسئ
+
 </a>
 
 </div>
 
+
 </div>
+
 </header>
 
 
-<!-- =========================
+
+<!-- =====================================================
      TABS
-========================= -->
+===================================================== -->
 
 <div class="tabs">
 
 <div class="wrap tabsin">
 
-<a class="tab selected" href="#gallery">
-🖼️ عکسونه
+<a class="tab selected" href="#home">
+🏠 کور
 </a>
 
-<a class="tab" href="#about">
-ℹ️ معلومات
+<a class="tab" href="#productsButton">
+🛍️ محصولات
+</a>
+
+<a class="tab" href="#gallery">
+🖼️ عکسونه
 </a>
 
 <a class="tab" href="#contact">
@@ -1058,67 +1854,617 @@ href="tel:0708782308">
 </div>
 
 
-<!-- =========================
-     GALLERY
-========================= -->
 
-<section id="gallery">
+<!-- =====================================================
+     PRODUCTS BUTTON
+===================================================== -->
+
+<div
+class="products-button-area"
+id="productsButton">
+
+<button
+class="products-button"
+id="productToggle"
+onclick="toggleProducts()">
+
+🛍️ محصولات
+
+<span class="arrow">
+▼
+</span>
+
+</button>
+
+</div>
+
+
+
+<!-- =====================================================
+     PRODUCTS
+===================================================== -->
+
+<section
+class="products"
+id="products">
 
 <div class="wrap">
 
+
 <div class="title">
-<h2>📸 زموږ عکسونه</h2>
-<p>د پاڅون موبایل ښکلي انځورونه</p>
+
+<h2>
+🛍️ زموږ محصولات
+</h2>
+
+<p>
+د پاڅون موبایل مختلف برانډونه او ډیجیټل لوازم
+</p>
+
 </div>
 
-<div class="gallery">
 
-<a
-class="item"
-href="https://www.facebook.com/share/1BnosgHgCD/"
-target="_blank">
-
-<span class="pin">📌</span>
-
-<img
-src="https://i.ibb.co/3nX4NhL/image.png"
-alt="پاڅون موبایل">
-
-<span class="views">👁 ۸۶۶۷</span>
-
-</a>
+<div class="product-grid">
 
 
-<a
-class="item"
-href="https://www.facebook.com/share/1BnosgHgCD/"
-target="_blank">
+<!-- iPhone -->
 
-<span class="pin">📌</span>
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1200&q=90"
+data-title="🍎 iPhone موبایلونه">
+
+<div class="product-image">
 
 <img
-src="https://i.ibb.co/qLb3bnyN/Whats-App-Image-2026-09-26-at-1-55-46-PM-1.jpg"
-alt="پاڅون موبایل">
+src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=85"
+alt="iPhone">
 
-<span class="views">👁 ۴۳۳۲</span>
+<span class="product-tag">
+🍎 Apple
+</span>
 
-</a>
+</div>
+
+<div class="product-info">
+
+<h3>
+🍎 iPhone
+</h3>
+
+<p>
+مختلف iPhone موبایلونه
+</p>
+
+</div>
+
+</div>
 
 
-<a
-class="item"
-href="https://www.facebook.com/share/1BnosgHgCD/"
-target="_blank">
 
-<span class="pin">📌</span>
+<!-- Samsung -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=1200&q=90"
+data-title="📱 Samsung موبایلونه">
+
+<div class="product-image">
 
 <img
-src="https://i.ibb.co/w8jbM47/Whats-App-Image-2026-09-26-at-1-55-47-PM.jpg"
-alt="پاڅون موبایل">
+src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=900&q=85"
+alt="Samsung">
 
-<span class="views">👁 ۳۶۷۸</span>
+<span class="product-tag">
+📱 Samsung
+</span>
 
-</a>
+</div>
+
+<div class="product-info">
+
+<h3>
+📱 Samsung
+</h3>
+
+<p>
+مختلف Samsung موبایلونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Xiaomi -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=1200&q=90"
+data-title="📱 Xiaomi موبایلونه">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=900&q=85"
+alt="Xiaomi">
+
+<span class="product-tag">
+📱 Xiaomi
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+📱 Xiaomi
+</h3>
+
+<p>
+Xiaomi موبایلونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Redmi -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=1200&q=90"
+data-title="📱 Redmi موبایلونه">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1567581935884-3349723552ca?auto=format&fit=crop&w=900&q=85"
+alt="Redmi">
+
+<span class="product-tag">
+📱 Redmi
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+📱 Redmi
+</h3>
+
+<p>
+مختلف Redmi موبایلونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Huawei -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=1200&q=90"
+data-title="📱 Huawei موبایلونه">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=900&q=85"
+alt="Huawei">
+
+<span class="product-tag">
+📱 Huawei
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+📱 Huawei
+</h3>
+
+<p>
+Huawei موبایلونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- OPPO -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=1200&q=90"
+data-title="📱 OPPO موبایلونه">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=900&q=85"
+alt="OPPO">
+
+<span class="product-tag">
+📱 OPPO
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+📱 OPPO
+</h3>
+
+<p>
+OPPO موبایلونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Vivo -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=1200&q=90"
+data-title="📱 vivo موبایلونه">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=900&q=85"
+alt="vivo">
+
+<span class="product-tag">
+📱 vivo
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+📱 vivo
+</h3>
+
+<p>
+vivo موبایلونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Wireless -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=1200&q=90"
+data-title="🎧 Wireless او AirPods">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?auto=format&fit=crop&w=900&q=85"
+alt="Wireless">
+
+<span class="product-tag">
+🎧 Wireless
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+🎧 Wireless
+</h3>
+
+<p>
+Wireless او AirPods
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Power Bank -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1609592424724-5f2d3c0b9d8a?auto=format&fit=crop&w=1200&q=90"
+data-title="🔋 Power Bank">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1609592424724-5f2d3c0b9d8a?auto=format&fit=crop&w=900&q=85"
+alt="Power Bank">
+
+<span class="product-tag">
+🔋 Power
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+🔋 Power Bank
+</h3>
+
+<p>
+مختلف Power Bankونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Smart Watch -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=1200&q=90"
+data-title="⌚ Smart Watch">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=900&q=85"
+alt="Smart Watch">
+
+<span class="product-tag">
+⌚ Smart
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+⌚ Smart Watch
+</h3>
+
+<p>
+مختلف سمارټ ساعتونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Headphones -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=90"
+data-title="🎧 Headphones">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85"
+alt="Headphones">
+
+<span class="product-tag">
+🎧 Audio
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+🎧 Headphones
+</h3>
+
+<p>
+هیډفون او Headset
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Speaker -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=1200&q=90"
+data-title="🔊 Bluetooth Speaker">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85"
+alt="Bluetooth Speaker">
+
+<span class="product-tag">
+🔊 Speaker
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+🔊 Bluetooth Speaker
+</h3>
+
+<p>
+بې‌سیم سپیکرونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Charger -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=1200&q=90"
+data-title="🔌 چارجرونه">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=85"
+alt="Charger">
+
+<span class="product-tag">
+🔌 Charger
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+🔌 چارجر
+</h3>
+
+<p>
+چارجر، USB او کیبلونه
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Accessories -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=1200&q=90"
+data-title="✨ د موبایل لوازم">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=85"
+alt="Accessories">
+
+<span class="product-tag">
+✨ Accessories
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+✨ موبایل لوازم
+</h3>
+
+<p>
+مختلف جانبي لوازم
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Gaming -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1200&q=90"
+data-title="🎮 Gaming لوازم">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=85"
+alt="Gaming">
+
+<span class="product-tag">
+🎮 Gaming
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+🎮 Gaming
+</h3>
+
+<p>
+د لوبو مختلف لوازم
+</p>
+
+</div>
+
+</div>
+
+
+
+<!-- Cover -->
+
+<div
+class="product-card zoom-product"
+data-image="https://images.unsplash.com/photo-1603313011108-4a2a3f6b0a39?auto=format&fit=crop&w=1200&q=90"
+data-title="🛡️ موبایل Cover">
+
+<div class="product-image">
+
+<img
+src="https://images.unsplash.com/photo-1603313011108-4a2a3f6b0a39?auto=format&fit=crop&w=900&q=85"
+alt="Mobile Cover">
+
+<span class="product-tag">
+🛡️ Cover
+</span>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+🛡️ موبایل Cover
+</h3>
+
+<p>
+مختلف Cover او محافظ
+</p>
+
+</div>
+
+</div>
+
 
 </div>
 
@@ -1127,17 +2473,117 @@ alt="پاڅون موبایل">
 </section>
 
 
-<!-- =========================
-     ABOUT
-========================= -->
 
-<section class="about" id="about">
+<!-- =====================================================
+     GALLERY
+===================================================== -->
+
+<section id="gallery">
 
 <div class="wrap">
 
 <div class="title">
 
-<h2>📱 د پاڅون موبایل په اړه</h2>
+<h2>
+📸 زموږ عکسونه
+</h2>
+
+<p>
+د پاڅون موبایل ښکلي انځورونه
+</p>
+
+</div>
+
+
+<div class="gallery">
+
+
+<div
+class="item zoom-product"
+data-image="https://i.ibb.co/3nX4NhL/image.png"
+data-title="پاڅون موبایل">
+
+<span class="pin">
+📌
+</span>
+
+<img
+src="https://i.ibb.co/3nX4NhL/image.png"
+alt="پاڅون موبایل">
+
+<span class="views">
+👁 ۸۶۶۷
+</span>
+
+</div>
+
+
+
+<div
+class="item zoom-product"
+data-image="https://i.ibb.co/qLb3bnyN/Whats-App-Image-2026-09-26-at-1-55-46-PM-1.jpg"
+data-title="پاڅون موبایل">
+
+<span class="pin">
+📌
+</span>
+
+<img
+src="https://i.ibb.co/qLb3bnyN/Whats-App-Image-2026-09-26-at-1-55-46-PM-1.jpg"
+alt="پاڅون موبایل">
+
+<span class="views">
+👁 ۴۳۳۲
+</span>
+
+</div>
+
+
+
+<div
+class="item zoom-product"
+data-image="https://i.ibb.co/w8jbM47/Whats-App-Image-2026-09-26-at-1-55-47-PM.jpg"
+data-title="صدیق الله پاڅون">
+
+<span class="pin">
+📌
+</span>
+
+<img
+src="https://i.ibb.co/w8jbM47/Whats-App-Image-2026-09-26-at-1-55-47-PM.jpg"
+alt="صدیق الله پاڅون">
+
+<span class="views">
+👁 ۳۶۷۸
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section
+class="about"
+id="about">
+
+<div class="wrap">
+
+
+<div class="title">
+
+<h2>
+📱 د پاڅون موبایل په اړه
+</h2>
 
 <p>
 باور، کیفیت او ښه خدمت
@@ -1151,22 +2597,31 @@ alt="پاڅون موبایل">
 
 <div class="card">
 
-<h3>📱 پاڅون موبایل</h3>
+<h3>
+📱 پاڅون موبایل
+</h3>
 
 <p>
+
 موږ هڅه کوو چې خپلو درنو مشتریانو ته
 د موبایلونو، لوازمو او ډیجیټل وسایلو
 په برخه کې ښه او مناسب خدمت وړاندې کړو.
+
 </p>
 
 <p>
-زموږ هدف د مشتریانو رضایت، ښه کیفیت
-او مناسب خدمت دی.
+
+زموږ هدف د مشتریانو رضایت،
+ښه کیفیت او مناسب خدمت دی.
+
 </p>
+
 
 <div class="address-box">
 
-<div class="address-icon">📍</div>
+<div class="address-icon">
+📍
+</div>
 
 <strong>
 زابل مرکز، قلات ښار
@@ -1181,23 +2636,42 @@ alt="پاڅون موبایل">
 </div>
 
 
+
 <div class="card">
 
-<h3>✨ زموږ خدمتونه</h3>
+<h3>
+✨ زموږ خدمتونه
+</h3>
 
 <div class="list">
 
-<div>📱 موبایلونه</div>
+<div>
+📱 مختلف موبایلونه
+</div>
 
-<div>🎧 د موبایل لوازم</div>
+<div>
+🎧 Wireless او AirPods
+</div>
 
-<div>⚡ شارژ او خدمات</div>
+<div>
+🔋 Power Bank
+</div>
 
-<div>📷 کمره او اړوند وسایل</div>
+<div>
+⌚ Smart Watch
+</div>
 
-<div>🔌 چارجر او کیبلونه</div>
+<div>
+🔌 چارجر او کیبل
+</div>
 
-<div>🎮 ډیجیټل وسایل</div>
+<div>
+🛡️ Cover او Screen Protector
+</div>
+
+<div>
+🎮 Gaming لوازم
+</div>
 
 </div>
 
@@ -1211,17 +2685,23 @@ alt="پاڅون موبایل">
 </section>
 
 
-<!-- =========================
-     CONTACT
-========================= -->
 
-<section class="contact" id="contact">
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section
+class="contact"
+id="contact">
 
 <div class="wrap">
 
+
 <div class="title">
 
-<h2>📞 له موږ سره اړیکه</h2>
+<h2>
+📞 له موږ سره اړیکه
+</h2>
 
 <p>
 د اړیکې لپاره لاندې لارې وکاروئ
@@ -1235,7 +2715,9 @@ alt="پاڅون موبایل">
 
 <div class="contactitem">
 
-<div class="ico">📞</div>
+<div class="ico">
+📞
+</div>
 
 <b>
 0708782308
@@ -1248,9 +2730,12 @@ alt="پاڅون موبایل">
 </div>
 
 
+
 <div class="contactitem">
 
-<div class="ico">📍</div>
+<div class="ico">
+📍
+</div>
 
 <b>
 زابل مرکز، قلات
@@ -1263,9 +2748,12 @@ alt="پاڅون موبایل">
 </div>
 
 
+
 <div class="contactitem">
 
-<div class="ico">💬</div>
+<div class="ico">
+💬
+</div>
 
 <b>
 WhatsApp
@@ -1278,9 +2766,12 @@ WhatsApp
 </div>
 
 
+
 <div class="contactitem">
 
-<div class="ico">📘</div>
+<div class="ico">
+📘
+</div>
 
 <b>
 فیسبوک
@@ -1298,98 +2789,422 @@ WhatsApp
 
 <div class="social">
 
+
 <a
 href="https://www.facebook.com/share/1BnosgHgCD/"
 target="_blank"
 title="Facebook">
+
 f
+
 </a>
+
 
 <a
 href="https://wa.me/93708782308"
 target="_blank"
 title="WhatsApp">
+
 ◉
+
 </a>
+
 
 <a
 href="tel:0708782308"
 title="تماس">
+
 ☎
+
 </a>
 
-</div>
 
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
+     WEBSITE DEVELOPER
+===================================================== -->
+
+<section class="developer">
+
+<div class="wrap">
+
+<div class="developer-card">
+
+<div class="developer-icon">
+👨‍💻
+</div>
+
+<h2>
+د ویب‌سایټ جوړونکي معلومات
+</h2>
+
+<h3>
+عبدالله مختار
+</h3>
+
+<p>
+د دې ویب‌سایټ ډیزاین او جوړونکی
+</p>
+
+
+<div class="developer-buttons">
+
+
+<a
+class="dev-btn dev-whatsapp"
+href="https://wa.me/93702624188"
+target="_blank">
+
+💬 WhatsApp:
+0702624188
+
+</a>
+
+
+<a
+class="dev-btn dev-site"
+href="https://abdullahmukhtar541-stack.github.io/Mokhtar/"
+target="_blank">
+
+🌐 شخصي ویب‌سایټ
+
+</a>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
 © 2026
-<strong>پاڅون موبایل</strong>
+
+<strong>
+پاڅون موبایل
+</strong>
+
 —
+
 ټول حقوق خوندي دي
 
 <br>
 
-زابل مرکز، قلات ښار، صرافانو کوڅه، اول نمبر دوکان
+زابل مرکز، قلات ښار،
+صرافانو کوڅه، اول نمبر دوکان
+
+<br>
+
+د ویب‌سایټ جوړونکی:
+<strong>
+عبدالله مختار
+</strong>
 
 </footer>
 
 
-<!-- =========================
+
+<!-- =====================================================
      TOP BUTTON
-========================= -->
+===================================================== -->
 
 <button
 class="top"
 onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
 ↑
+
 </button>
 
 
+
+<!-- =====================================================
+     IMAGE LIGHTBOX
+===================================================== -->
+
+<div
+class="lightbox"
+id="lightbox">
+
+<button
+class="close-lightbox"
+id="closeLightbox"
+aria-label="بندول">
+
+×
+
+</button>
+
+
+<img
+id="lightboxImage"
+src=""
+alt="لوی عکس">
+
+
+<div
+class="lightbox-title"
+id="lightboxTitle">
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
 <script>
 
-/* Mobile menu */
+/* =====================================================
+   MOBILE MENU
+===================================================== */
 
-document.querySelectorAll('.links a').forEach(function(link){
+function toggleMenu(){
 
-    link.addEventListener('click',function(){
+    document
+    .getElementById("links")
+    .classList.toggle("open");
+
+}
+
+
+/* =====================================================
+   CLOSE MOBILE MENU
+===================================================== */
+
+document
+.querySelectorAll(".links a")
+.forEach(function(link){
+
+    link.addEventListener("click",function(){
 
         document
-        .getElementById('links')
-        .classList.remove('open');
+        .getElementById("links")
+        .classList.remove("open");
 
     });
 
 });
 
 
-/* Close menu when clicking outside */
+/* =====================================================
+   PRODUCTS SHOW / HIDE
+===================================================== */
 
-document.addEventListener('click',function(e){
+function toggleProducts(){
 
-    const menu=document.getElementById('links');
-    const button=document.querySelector('.hamb');
+    const products =
+    document.getElementById("products");
 
-    if(
-        menu.classList.contains('open') &&
-        !menu.contains(e.target) &&
-        !button.contains(e.target)
-    ){
-        menu.classList.remove('open');
+    const button =
+    document.getElementById("productToggle");
+
+
+    products.classList.toggle("show");
+
+    button.classList.toggle("active");
+
+
+    if(products.classList.contains("show")){
+
+        setTimeout(function(){
+
+            products.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+        },100);
+
+    }
+
+}
+
+
+/* =====================================================
+   NAVBAR PRODUCT BUTTON
+===================================================== */
+
+document
+.querySelectorAll('a[href="#productsButton"]')
+.forEach(function(link){
+
+    link.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+
+        const products =
+        document.getElementById("products");
+
+        const button =
+        document.getElementById("productToggle");
+
+
+        if(!products.classList.contains("show")){
+
+            products.classList.add("show");
+
+            button.classList.add("active");
+
+        }
+
+
+        setTimeout(function(){
+
+            products.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+        },100);
+
+    });
+
+});
+
+
+/* =====================================================
+   IMAGE LIGHTBOX
+===================================================== */
+
+const lightbox =
+document.getElementById("lightbox");
+
+const lightboxImage =
+document.getElementById("lightboxImage");
+
+const lightboxTitle =
+document.getElementById("lightboxTitle");
+
+const closeLightbox =
+document.getElementById("closeLightbox");
+
+
+/* Product and gallery images */
+
+document
+.querySelectorAll(".zoom-product")
+.forEach(function(item){
+
+    item.addEventListener("click",function(){
+
+        const image =
+        item.getAttribute("data-image");
+
+        const title =
+        item.getAttribute("data-title") || "";
+
+
+        lightboxImage.src=image;
+
+        lightboxTitle.textContent=title;
+
+        lightbox.classList.add("show");
+
+        document.body.style.overflow="hidden";
+
+    });
+
+});
+
+
+/* Small profile images */
+
+document
+.querySelectorAll(".zoom-image")
+.forEach(function(image){
+
+    image.addEventListener("click",function(){
+
+        lightboxImage.src=image.src;
+
+        lightboxTitle.textContent=
+        image.getAttribute("data-title") || "";
+
+        lightbox.classList.add("show");
+
+        document.body.style.overflow="hidden";
+
+    });
+
+});
+
+
+/* =====================================================
+   CLOSE LIGHTBOX
+===================================================== */
+
+function closeImage(){
+
+    lightbox.classList.remove("show");
+
+    lightboxImage.src="";
+
+    document.body.style.overflow="";
+
+}
+
+
+closeLightbox.addEventListener(
+"click",
+closeImage
+);
+
+
+/* Click outside image */
+
+lightbox.addEventListener(
+"click",
+function(e){
+
+    if(e.target === lightbox){
+
+        closeImage();
+
     }
 
 });
 
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+    if(e.key === "Escape"){
+
+        closeImage();
+
+    }
+
+});
+
+
 </script>
+
 
 </body>
 </html>
