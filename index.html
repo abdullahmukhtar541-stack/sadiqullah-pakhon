@@ -3,157 +3,328 @@
 <html lang="ps" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mokhtar School Attendance</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f1f5f9;color:#172033;font-family:Arial,sans-serif}
-header{background:#123b65;color:white;padding:18px;text-align:center}
-main{max-width:1100px;margin:auto;padding:15px}
-.panel{background:white;border-radius:13px;padding:16px;margin:12px 0;box-shadow:0 3px 12px #0001}
-h2{font-size:19px;margin-top:0}
-input,select,button{font:inherit;padding:11px;border-radius:8px;border:1px solid #cbd5e1;max-width:100%}
-input,select{width:100%;margin:5px 0 10px}
-button{background:#155eaa;color:white;border:0;cursor:pointer;margin:4px}
-button.secondary{background:#475569}
-button.danger{background:#b91c1c}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-nav{display:flex;flex-wrap:wrap;gap:5px}
-nav button{flex:1}
-.hidden{display:none!important}
-#reader{max-width:500px;margin:12px auto}
-video{max-width:100%}
-table{width:100%;border-collapse:collapse}
-th,td{padding:9px;border-bottom:1px solid #ddd;text-align:right}
-.tablewrap{overflow:auto}
-.student-photo{width:70px;height:70px;object-fit:cover;border-radius:10px}
-#status{white-space:pre-wrap;padding:8px;color:#075985}
-.card{border:1px solid #bbb;padding:10px;text-align:center;break-inside:avoid}
-.card img.photo{width:65px;height:65px;object-fit:cover;border-radius:50%}
-.qr{display:block;margin:8px auto}
-.small{font-size:12px;color:#64748b}
-@media print{
- body{background:white}
- body *{visibility:hidden}
- #printArea,#printArea *{visibility:visible}
- #printArea{position:absolute;left:0;top:0;width:100%;padding:5mm}
- .printGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm}
- .card{min-height:55mm}
- .no-print{display:none!important}
+:root {
+  --blue:#123b65;
+  --light:#eef4fa;
+  --green:#087f5b;
+  --red:#c0392b;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:#f2f5f9;
+  color:#172b40;
+  font-family:Arial,"Noto Sans Arabic",sans-serif;
+}
+header {
+  background:linear-gradient(120deg,#102c4d,#1676b8);
+  color:white;
+  padding:22px 15px;
+  text-align:center;
+}
+header h1 { margin:0 0 8px; font-size:25px; }
+header p { margin:0; }
+main { max-width:1150px; margin:20px auto; padding:0 12px; }
+.panel {
+  background:white;
+  padding:18px;
+  margin-bottom:16px;
+  border-radius:15px;
+  box-shadow:0 3px 14px #142f4c12;
+}
+h2 { font-size:20px; margin-top:0; }
+input,select,textarea,button {
+  font:inherit;
+  padding:11px;
+  border-radius:9px;
+}
+input,select,textarea {
+  width:100%;
+  border:1px solid #ccd6e1;
+  background:white;
+  margin:5px 0 12px;
+}
+button {
+  border:0;
+  cursor:pointer;
+  color:white;
+  background:var(--blue);
+  margin:4px 2px;
+}
+button:disabled { opacity:.5; cursor:not-allowed; }
+button.green { background:var(--green); }
+button.red { background:var(--red); }
+button.gold { background:#b7791f; }
+button.gray { background:#526477; }
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:16px;
+}
+.hidden { display:none!important; }
+.status {
+  padding:12px;
+  border-radius:9px;
+  background:#edf4fb;
+  margin:10px 0;
+  white-space:pre-wrap;
+}
+.success { background:#e4f8ed; color:#12623e; }
+.error { background:#fff0ef; color:#9c2b22; }
+.small { color:#607184; font-size:13px; line-height:1.7; }
+.scanner-frame {
+  position:relative;
+  width:100%;
+  max-width:480px;
+  margin:14px auto;
+  border:3px solid #1686e8;
+  border-radius:17px;
+  overflow:hidden;
+  background:#071421;
+  box-shadow:0 0 20px #1686e855;
+}
+#reader { width:100%; border:0!important; }
+#reader video { width:100%!important; display:block; }
+.scan-line {
+  position:absolute;
+  z-index:5;
+  top:8%;
+  left:4%;
+  width:92%;
+  height:3px;
+  pointer-events:none;
+  background:#00ff9d;
+  box-shadow:0 0 9px #00ff9d,0 0 22px #00ff9d;
+  animation:scanMove 2.2s ease-in-out infinite alternate;
+}
+@keyframes scanMove {
+  from { top:8%; }
+  to { top:90%; }
+}
+#faceVideo {
+  width:100%;
+  max-width:480px;
+  display:block;
+  margin:auto;
+  border-radius:14px;
+  background:#071421;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+  gap:14px;
+}
+.student-id-card {
+  width:100%;
+  max-width:390px;
+  min-height:205px;
+  padding:13px;
+  overflow:hidden;
+  border:1px solid #cbd5e1;
+  border-radius:14px;
+  color:#153451;
+  background:white;
+  break-inside:avoid;
+  box-shadow:0 3px 10px #00000010;
+}
+.student-id-header {
+  background:#123b65;
+  color:white;
+  margin:-13px -13px 12px;
+  padding:12px 8px;
+  text-align:center;
+  font-weight:bold;
+}
+.student-id-body {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.student-id-photo {
+  width:85px;
+  height:100px;
+  object-fit:cover;
+  border:2px solid #e8a23b;
+  border-radius:8px;
+}
+.student-id-info {
+  flex:1;
+  min-width:0;
+  font-size:13px;
+  line-height:1.9;
+  overflow-wrap:anywhere;
+}
+.student-id-qr { width:78px; min-width:78px; }
+.student-id-qr img,.student-id-qr canvas {
+  max-width:78px!important;
+  height:auto!important;
+}
+.student-id-footer {
+  margin-top:9px;
+  border-top:1px solid #ddd;
+  padding-top:7px;
+  text-align:center;
+  font-size:11px;
+}
+table { width:100%; border-collapse:collapse; }
+th,td {
+  border:1px solid #dce3ea;
+  padding:9px;
+  text-align:right;
+  font-size:14px;
+}
+th { background:#eaf1f8; }
+.table-wrap { overflow-x:auto; }
+@media print {
+  body { background:white; }
+  body * { visibility:hidden; }
+  #printArea,#printArea * { visibility:visible; }
+  #printArea {
+    position:absolute;
+    top:0;
+    right:0;
+    width:100%;
+  }
+  .student-id-card {
+    display:inline-block;
+    width:86mm;
+    margin:4mm;
+    print-color-adjust:exact;
+    -webkit-print-color-adjust:exact;
+  }
+  .no-print { display:none!important; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .scan-line { animation:none; top:50%; }
 }
 </style>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.15/dist/face-api.js"></script>
 </head>
 
 <body>
 <header>
-  <h1>د مختار ښوونځي د حاضري سیستم</h1>
-  <div>Mokhtar School Attendance</div>
+  <h1>🏫 د مکتب د حاضري هوښیار سیستم</h1>
+  <p>Mokhtar School Attendance System</p>
 </header>
 
 <main>
-<section id="loginPanel" class="panel">
-  <h2>د اډمین ننوتل</h2>
-  <input id="email" type="email" placeholder="د اډمین ایمیل">
-  <input id="password" type="password" placeholder="پاسورډ">
-  <button onclick="login()">ننوتل</button>
-  <button class="secondary" onclick="resetPassword()">پاسورډ بېرته ترلاسه کول</button>
-</section>
+  <section class="panel" id="loginPanel">
+    <h2>🔐 د مدیر ننوتل</h2>
+    <label>د مدیر ایمیل</label>
+    <input id="email" type="email" placeholder="د مدیر ایمیل" autocomplete="username">
+    <label>پاسورډ</label>
+    <input id="password" type="password" placeholder="پاسورډ" autocomplete="current-password">
+    <button id="loginBtn" class="green">ننوتل</button>
+    <div id="loginMsg" class="status">د مدیر په خپل تایید شوي ایمیل ننوتل وکړه.</div>
+  </section>
 
-<section id="app" class="hidden">
-  <div class="panel">
-    <b id="who"></b>
-    <button class="danger" onclick="logout()">وتل</button>
-    <nav class="no-print">
-      <button onclick="showPage('studentsPage')">زده‌کوونکي</button>
-      <button onclick="showPage('scanPage')">QR سکین</button>
-      <button onclick="showPage('facePage')">مخ پېژندنه</button>
-      <button onclick="showPage('leavePage')">رخصتي</button>
-      <button onclick="showPage('reportPage')">راپورونه</button>
-      <button onclick="showPage('printPage')">د QR چاپ</button>
-    </nav>
-  </div>
+  <section id="appPanel" class="hidden">
+    <div class="panel">
+      <b>د مدیر برخه</b>
+      <span id="adminLabel"></span>
+      <button id="logoutBtn" class="red">وتل</button>
+    </div>
 
-  <div id="status" class="panel">سیستم چمتو دی.</div>
-
-  <section id="studentsPage" class="panel page">
-    <h2>د زده‌کوونکي ثبت</h2>
     <div class="grid">
-      <div><label>بشپړ نوم</label><input id="sName" placeholder="د زده‌کوونکي نوم"></div>
-      <div><label>د زده‌کوونکي شمېره</label><input id="sNumber" placeholder="لکه ST-001"></div>
-      <div><label>ټولګی</label><input id="sClass" placeholder="لکه ۷ الف"></div>
-      <div><label>د عکس فایل</label><input id="sPhoto" type="file" accept="image/*" capture="user"></div>
+      <section class="panel">
+        <h2>👨‍🎓 د زده‌کوونکي ثبت</h2>
+        <label>د زده‌کوونکي نوم</label>
+        <input id="studentName" placeholder="لکه: عبدالله">
+        <label>د زده‌کوونکي شمېره</label>
+        <input id="studentNumber" placeholder="لکه: 1001">
+        <label>ټولګی</label>
+        <input id="studentClass" placeholder="لکه: اتم الف">
+        <label>د زده‌کوونکي عکس</label>
+        <input id="studentPhoto" type="file" accept="image/*">
+        <label>
+          <input id="faceConsent" type="checkbox" style="width:auto">
+          د مخ پېژندنې لپاره د مکتب/والدینو اجازه ترلاسه شوې ده
+        </label>
+        <button id="addStudentBtn" class="green">زده‌کوونکی ثبت کړه</button>
+        <div id="studentMsg" class="status">د مخ پېژندنه اختیاري ده؛ د QR کوډ له لارې هم حاضري اخیستل کېږي.</div>
+      </section>
+
+      <section class="panel">
+        <h2>📷 د QR کوډ سکن</h2>
+        <p class="small">د زده‌کوونکي د کارت QR کوډ د کمرې مخې ته ونیسه.</p>
+        <div class="scanner-frame">
+          <div id="reader"></div>
+          <div class="scan-line"></div>
+        </div>
+        <button id="startQrBtn" class="green">کمره پیل کړه</button>
+        <button id="stopQrBtn" class="gray">کمره بنده کړه</button>
+        <div id="qrMsg" class="status">کمره لا نه ده پیل شوې.</div>
+      </section>
+
+      <section class="panel">
+        <h2>🧑 د مخ پېژندنه</h2>
+        <p class="small">د مخ پېژندنې لپاره کمره پیل کړه. سیستم به د ثبت شوو او د مخ د پېژندنې اجازه لرونکو زده‌کوونکو له عکسونو سره پرتله وکړي. که نوم وموندل شي، د حاضري تر ثبت مخکې تایید غواړي.</p>
+        <video id="faceVideo" autoplay muted playsinline></video>
+        <button id="startFaceBtn" class="green">د مخ سکن پیل کړه</button>
+        <button id="stopFaceBtn" class="gray">د مخ سکن بند کړه</button>
+        <div id="faceMsg" class="status">د مخ سکن لا نه دی پیل شوی.</div>
+      </section>
+
+      <section class="panel">
+        <h2>📊 د حاضري راپور</h2>
+        <label>نېټه</label>
+        <input id="reportDate" type="date">
+        <button id="reportBtn" class="green">راپور ښکاره کړه</button>
+        <button id="csvBtn" class="gray">CSV راپور ښکته کړه</button>
+        <div id="reportSummary" class="status">د راپور لپاره نېټه وټاکه.</div>
+      </section>
     </div>
-    <label><input id="faceConsent" type="checkbox" style="width:auto"> د مخ پېژندنې د اختیاري ازموینې لپاره د اړین رضایت تایید شوی</label>
-    <button onclick="addStudent()">زده‌کوونکی ثبت کړه</button>
-    <button class="secondary" onclick="loadStudents()">تازه کول</button>
-    <div class="tablewrap">
-      <table><thead><tr><th>عکس</th><th>نوم</th><th>شمېره</th><th>ټولګی</th><th>QR</th></tr></thead>
-      <tbody id="studentsTable"></tbody></table>
-    </div>
-  </section>
 
-  <section id="scanPage" class="panel page hidden">
-    <h2>د QR له لارې حاضري</h2>
-    <p>د کمرې اجازه ورکړه او د زده‌کوونکي QR کوډ سکین کړه.</p>
-    <label>کمره</label>
-    <select id="cameraChoice"><option value="user">مخکینۍ کمره</option><option value="environment">شاتنۍ کمره</option></select>
-    <button onclick="startQR()">سکین پیل کړه</button>
-    <button class="danger" onclick="stopQR()">سکین بند کړه</button>
-    <div id="reader"></div>
-  </section>
+    <section class="panel">
+      <h2>📋 د زده‌کوونکو لېست</h2>
+      <input id="studentSearch" placeholder="د نوم یا شمېرې له مخې لټون">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>نوم</th><th>شمېره</th><th>ټولګی</th><th>کارت</th></tr></thead>
+          <tbody id="studentsTable"></tbody>
+        </table>
+      </div>
+    </section>
 
-  <section id="facePage" class="panel page hidden">
-    <h2>اختیاري د مخ پېژندنه</h2>
-    <p>دا ازمایښتي پېژندنه د ثبت شوي عکس سره د کمرې د مخ ځانګړنې پرتله کوي. دا د هویت قطعي ثبوت نه دی؛ د پایلې له تایید مخکې حاضري نه ثبتېږي.</p>
-    <button onclick="startFace()">د مخ پېژندنه پیل کړه</button>
-    <button class="danger" onclick="stopFace()">کمره بنده کړه</button>
-    <div><video id="faceVideo" autoplay muted playsinline style="width:100%;max-width:480px"></video></div>
-    <button onclick="matchFace()">مخ پرتله او پایله وګوره</button>
-    <div id="faceResult"></div>
-    <button id="confirmFaceBtn" class="hidden" onclick="confirmFaceAttendance()">د پېژندل شوي زده‌کوونکي حاضري تایید کړه</button>
-  </section>
+    <section class="panel">
+      <h2>🧾 د حاضري تفصیل</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>نوم</th><th>شمېره</th><th>ټولګی</th><th>وخت</th><th>طریقه</th><th>حالت</th></tr></thead>
+          <tbody id="attendanceTable"></tbody>
+        </table>
+      </div>
+    </section>
 
-  <section id="leavePage" class="panel page hidden">
-    <h2>د رخصتۍ ثبت</h2>
-    <label>زده‌کوونکی</label><select id="leaveStudent"></select>
-    <label>د رخصتۍ ډول</label>
-    <select id="leaveType"><option>ناروغي</option><option>کورنۍ ستونزه</option><option>رسمي رخصتي</option><option>نور</option></select>
-    <label>له نېټې</label><input type="date" id="leaveStart">
-    <label>تر نېټې</label><input type="date" id="leaveEnd">
-    <label>دلیل</label><input id="leaveReason" placeholder="د رخصتۍ دلیل">
-    <button onclick="addLeave()">رخصتي ثبت کړه</button>
-    <div class="tablewrap"><table><thead><tr><th>نوم</th><th>له</th><th>تر</th><th>ډول</th><th>حالت</th></tr></thead><tbody id="leavesTable"></tbody></table></div>
+    <section class="panel">
+      <h2>🪪 د زده‌کوونکو کارتونه</h2>
+      <button id="makeCardsBtn" class="green">کارتونه جوړ کړه</button>
+      <button id="printCardsBtn" class="gold">کارتونه چاپ کړه</button>
+      <div id="printArea" class="cards"></div>
+    </section>
   </section>
-
-  <section id="reportPage" class="panel page hidden">
-    <h2>د حاضري راپور</h2>
-    <label>نېټه</label><input id="reportDate" type="date">
-    <button onclick="loadReport()">راپور ښکاره کړه</button>
-    <button class="secondary" onclick="print()">راپور چاپ کړه</button>
-    <div id="reportSummary"></div>
-    <div class="tablewrap"><table><thead><tr><th>نوم</th><th>ټولګی</th><th>حالت</th><th>د ننوتلو وخت</th><th>د وتلو وخت</th></tr></thead><tbody id="reportTable"></tbody></table></div>
-  </section>
-
-  <section id="printPage" class="panel page hidden">
-    <h2>د زده‌کوونکو QR کارتونه</h2>
-    <p>کارتونه د A4 پاڼې لپاره برابر دي. د چاپ په کړکۍ کې A4 کاغذ وټاکه.</p>
-    <button onclick="prepareCards()">کارتونه جوړ کړه</button>
-    <button onclick="window.print()">چاپ</button>
-    <div id="printArea"><div id="cards" class="printGrid"></div></div>
-  </section>
-</section>
 </main>
 
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+
+<!-- QR generation and QR scanning -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+<!-- Face recognition library -->
+<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+
 <script>
+"use strict";
+
+/* د خپل Firebase پروژې معلومات */
 const firebaseConfig = {
   apiKey: "AIzaSyDEf89pdqFYFYy4RBZxIGd9bs_lcQEXcBc",
   authDomain: "mokhtar-school-attendance.firebaseapp.com",
@@ -165,336 +336,524 @@ const firebaseConfig = {
   measurementId: "G-Z1CX05PN0D"
 };
 
+const ADMIN_EMAIL = "abdullahmukhtar541@gmail.com";
+const MODEL_URL = "https://justadudewhohacks.github.io/face-api.js/models";
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
-const ADMIN_EMAIL = "abdullahmukhtar541@gmail.com";
-
-let students = [];
-let scanner = null;
-let qrBusy = false;
-let faceStream = null;
-let faceReady = false;
-let candidateStudent = null;
 
 const $ = id => document.getElementById(id);
-const today = () => new Date().toLocaleDateString("en-CA");
-const message = t => $("status").textContent = t;
-const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g,c=>({
+const today = () => {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+};
+const escapeHtml = value => String(value ?? "").replace(/[&<>"']/g, c => ({
   "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
 }[c]));
-const currentTime = () => new Date().toLocaleTimeString();
 
-function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
-  $(id).classList.remove("hidden");
-  if(id==="studentsPage") loadStudents();
-  if(id==="leavePage") loadLeaves();
-  if(id==="reportPage") loadReport();
+let students = [];
+let qrScanner = null;
+let faceStream = null;
+let faceLoop = false;
+let faceModelsReady = false;
+let faceBusy = false;
+let lastFaceAttempt = 0;
+let reportRows = [];
+
+$("reportDate").value = today();
+
+/* د غږ او بریالي ثبت خبرتیا */
+function announceSuccess(name, message) {
+  // لنډ بریپ غږ
+  try {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioContextClass) {
+      const ctx = new AudioContextClass();
+      const oscillator = ctx.createOscillator();
+      const gain = ctx.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.value = 880;
+      gain.gain.value = 0.12;
+      oscillator.connect(gain);
+      gain.connect(ctx.destination);
+      oscillator.start();
+      oscillator.stop(ctx.currentTime + 0.18);
+      oscillator.onended = () => ctx.close();
+    }
+  } catch (e) { console.warn("Beep sound unavailable", e); }
+
+  // د زده‌کوونکي نوم په پښتو کې ویل
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(
+      `${name}، ستا حاضري ثبت شوه`
+    );
+    utterance.lang = "ps-AF";
+    utterance.rate = 0.86;
+    utterance.pitch = 1.05;
+    window.speechSynthesis.speak(utterance);
+  }
+  return message;
 }
 
-auth.onAuthStateChanged(async user=>{
-  if(user && user.emailVerified && user.email.toLowerCase()===ADMIN_EMAIL.toLowerCase()){
-    $("loginPanel").classList.add("hidden");
-    $("app").classList.remove("hidden");
-    $("who").textContent="ننوتی حساب: "+user.email;
-    $("reportDate").value=today();
+function setStatus(id, message, type="") {
+  const el = $(id);
+  el.textContent = message;
+  el.className = "status" + (type ? " " + type : "");
+}
+
+/* د مدیر ننوتل */
+$("loginBtn").onclick = async () => {
+  const email = $("email").value.trim().toLowerCase();
+  const password = $("password").value;
+  if (!email || !password) {
+    setStatus("loginMsg", "ایمیل او پاسورډ ولیکه.", "error");
+    return;
+  }
+  try {
+    const result = await auth.signInWithEmailAndPassword(email, password);
+    await result.user.reload();
+    if (result.user.email.toLowerCase() !== ADMIN_EMAIL ||
+        !result.user.emailVerified) {
+      await auth.signOut();
+      setStatus("loginMsg", "یوازې د مدیر تایید شوی ایمیل د ننوتلو اجازه لري. خپل ایمیل تایید کړه.", "error");
+      return;
+    }
+    setStatus("loginMsg", "ننوتل بریالي شول.", "success");
+  } catch (e) {
+    setStatus("loginMsg", "ننوتل ناکام شول: " + e.message, "error");
+  }
+};
+
+$("logoutBtn").onclick = async () => {
+  await stopQr();
+  stopFace();
+  await auth.signOut();
+};
+
+auth.onAuthStateChanged(async user => {
+  const allowed = !!user &&
+    user.email.toLowerCase() === ADMIN_EMAIL &&
+    user.emailVerified;
+  $("loginPanel").classList.toggle("hidden", allowed);
+  $("appPanel").classList.toggle("hidden", !allowed);
+  if (allowed) {
+    $("adminLabel").textContent = " — " + user.email;
     await loadStudents();
-    message("Firebase سره اړیکه فعاله ده.");
+    await loadReport();
   } else {
-    $("app").classList.add("hidden");
-    $("loginPanel").classList.remove("hidden");
-    if(user) message("خپل ایمیل تایید کړه او بیا ننوتل وکړه.");
+    students = [];
+    $("studentsTable").innerHTML = "";
   }
 });
 
-async function login(){
-  try{
-    const r=await auth.signInWithEmailAndPassword($("email").value.trim(),$("password").value);
-    if(!r.user.emailVerified){
-      await auth.signOut();
-      alert("لومړی خپل ایمیل تایید کړه. د Firebase د تایید ایمیل وګوره.");
-      return;
-    }
-    if(r.user.email.toLowerCase()!==ADMIN_EMAIL.toLowerCase()){
-      await auth.signOut();
-      alert("دا حساب د اډمین ایمیل نه دی.");
-    }
-  }catch(e){alert("ننوتل ناکام شول: "+e.message)}
-}
-async function logout(){await stopQR();stopFace();await auth.signOut()}
-async function resetPassword(){
-  const email=$("email").value.trim();
-  if(!email)return alert("لومړی خپل ایمیل ولیکه.");
-  try{await auth.sendPasswordResetEmail(email);alert("که حساب موجود وي، د پاسورډ د بیا تنظیم پیغام به درولېږل شي.")}
-  catch(e){alert(e.message)}
-}
-function assertAdmin(){
-  const u=auth.currentUser;
-  if(!u || !u.emailVerified || u.email.toLowerCase()!==ADMIN_EMAIL.toLowerCase())
-    throw new Error("د اډمین تایید شوی حساب ته ننوتل اړین دي.");
+/* د عکس د مخ ځانګړنې جوړول */
+async function loadFaceModels() {
+  if (faceModelsReady) return;
+  if (!window.faceapi) throw new Error("د مخ پېژندنې کتابتون نه دی پورته شوی.");
+  await Promise.all([
+    faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
+    faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
+    faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL)
+  ]);
+  faceModelsReady = true;
 }
 
-async function addStudent(){
-  try{
-    assertAdmin();
-    const name=$("sName").value.trim();
-    const number=$("sNumber").value.trim();
-    const cls=$("sClass").value.trim();
-    const file=$("sPhoto").files[0];
-    if(!name||!number||!cls||!file) return alert("نوم، شمېره، ټولګی او عکس ټول اړین دي.");
-    if(file.size>5*1024*1024) return alert("عکس باید تر ۵ MB کم وي.");
-    if(!file.type.startsWith("image/")) return alert("یوازې د عکس فایل غوره کړه.");
-
-    const duplicate=await db.collection("students").where("number","==",number).get();
-    if(!duplicate.empty) return alert("دا شمېره له مخکې ثبت ده.");
-
-    const ref=db.collection("students").doc();
-    const path="student-photos/"+ref.id;
-    await storage.ref(path).put(file);
-    const photoURL=await storage.ref(path).getDownloadURL();
-
-    await ref.set({
-      name, number, className:cls, photoURL, photoPath:path,
-      faceConsent:$("faceConsent").checked,
-      createdAt:firebase.firestore.FieldValue.serverTimestamp()
-    });
-    $("sName").value="";$("sNumber").value="";$("sClass").value="";
-    $("sPhoto").value="";$("faceConsent").checked=false;
-    message("زده‌کوونکی ثبت شو.");
-    await loadStudents();
-  }catch(e){alert("د ثبت ستونزه: "+e.message)}
-}
-
-async function loadStudents(){
-  try{
-    assertAdmin();
-    const snap=await db.collection("students").orderBy("name").get();
-    students=snap.docs.map(d=>({id:d.id,...d.data()}));
-    $("studentsTable").innerHTML=students.map(s=>`
-      <tr>
-        <td><img class="student-photo" src="${escapeHTML(s.photoURL)}" alt="عکس"></td>
-        <td>${escapeHTML(s.name)}</td><td>${escapeHTML(s.number)}</td>
-        <td>${escapeHTML(s.className)}</td>
-        <td><button onclick="showStudentQR('${s.id}')">QR</button></td>
-      </tr>`).join("");
-    $("leaveStudent").innerHTML=students.map(s=>
-      `<option value="${s.id}">${escapeHTML(s.name)} — ${escapeHTML(s.className)}</option>`
-    ).join("");
-  }catch(e){message("د زده‌کوونکو د لوستلو ستونزه: "+e.message)}
-}
-
-function showStudentQR(id){
-  const s=students.find(x=>x.id===id);if(!s)return;
-  const w=window.open("","_blank","width=420,height=520");
-  if(!w)return alert("د QR کارت لپاره د نوې کړکۍ اجازه ورکړه.");
-  w.document.write(`<!doctype html><html lang="ps" dir="rtl"><meta charset="utf-8">
-  <title>د زده‌کوونکي QR</title><body style="font-family:Arial;text-align:center;padding:20px">
-  <img src="${escapeHTML(s.photoURL)}" style="width:100px;height:100px;object-fit:cover;border-radius:50%">
-  <h2>${escapeHTML(s.name)}</h2><p>شمېره: ${escapeHTML(s.number)}</p>
-  <p>ټولګی: ${escapeHTML(s.className)}</p><div id="qr"></div>
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"><\/script>
-  <script>new QRCode(document.getElementById('qr'),{text:${JSON.stringify(s.id)},width:200,height:200});<\/script>
-  <button onclick="print()">چاپ</button></body></html>`);
-  w.document.close();
-}
-
-async function startQR(){
-  try{
-    assertAdmin();
-    if(!window.Html5Qrcode)throw new Error("د QR کتابتون نه دی پورته شوی؛ انټرنېټ وګوره.");
-    if(scanner)await stopQR();
-    scanner=new Html5Qrcode("reader");
-    await scanner.start(
-      {facingMode:$("cameraChoice").value},
-      {fps:10,qrbox:{width:230,height:230}},
-      async decoded=>{
-        if(qrBusy)return;
-        qrBusy=true;
-        try{await markAttendance(decoded.trim())}
-        catch(e){message("د QR ستونزه: "+e.message)}
-        finally{setTimeout(()=>qrBusy=false,1500)}
-      },
-      ()=>{}
-    );
-    message("کمره فعاله ده؛ QR کوډ د چوکاټ دننه ونیسه.");
-  }catch(e){message("کمره نه فعالیږي: "+e.message+" — د HTTPS او Camera اجازه وګوره.")}
-}
-async function stopQR(){
-  if(scanner){
-    try{if(scanner.isScanning)await scanner.stop();await scanner.clear()}catch(e){}
-    scanner=null;
+async function descriptorFromFile(file) {
+  await loadFaceModels();
+  const imageUrl = URL.createObjectURL(file);
+  try {
+    const img = new Image();
+    img.src = imageUrl;
+    await img.decode();
+    const result = await faceapi
+      .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
+      .withFaceLandmarks()
+      .withFaceDescriptor();
+    if (!result) throw new Error("په عکس کې مخ ونه موندل شو. روښانه او مخامخ عکس وکاروه.");
+    return Array.from(result.descriptor);
+  } finally {
+    URL.revokeObjectURL(imageUrl);
   }
 }
 
-async function markAttendance(studentId){
-  assertAdmin();
-  const student=students.find(s=>s.id===studentId);
-  if(!student){message("دا QR د ثبت شوي زده‌کوونکي نه دی.");return}
-  const date=today(), id=date+"_"+studentId;
-  const ref=db.collection("attendance").doc(id);
-  await db.runTransaction(async tx=>{
-    const doc=await tx.get(ref);
-    if(!doc.exists){
-      tx.set(ref,{studentId,studentName:student.name,className:student.className,
-        date,status:"حاضر",checkIn:currentTime(),checkOut:"",source:"QR"});
-    }else{
-      const d=doc.data();
-      if(d.status==="رخصت"){throw new Error("د زده‌کوونکي رخصتي ثبت ده.")}
-      if(!d.checkOut){
-        tx.update(ref,{checkOut:currentTime()});
-      }else{
-        throw new Error("د نن ورځې ننوتل او وتل دواړه ثبت دي.");
-      }
+/* زده‌کوونکی ثبتول */
+$("addStudentBtn").onclick = async () => {
+  const name = $("studentName").value.trim();
+  const number = $("studentNumber").value.trim();
+  const className = $("studentClass").value.trim();
+  const file = $("studentPhoto").files[0];
+  const faceConsent = $("faceConsent").checked;
+
+  if (!name || !number || !className || !file) {
+    setStatus("studentMsg", "نوم، شمېره، ټولګی او عکس ټول اړین دي.", "error");
+    return;
+  }
+  if (!auth.currentUser || auth.currentUser.email !== ADMIN_EMAIL ||
+      !auth.currentUser.emailVerified) {
+    setStatus("studentMsg", "لومړی د مدیر له تایید شوي حساب څخه ننوتل وکړه.", "error");
+    return;
+  }
+
+  $("addStudentBtn").disabled = true;
+  try {
+    const duplicate = students.some(s => s.number.toLowerCase() === number.toLowerCase());
+    if (duplicate) throw new Error("دا د زده‌کوونکي شمېره مخکې ثبت شوې ده.");
+
+    let descriptor = null;
+    if (faceConsent) {
+      setStatus("studentMsg", "د مخ ځانګړنې چمتو کېږي، لږ انتظار وکړه...");
+      descriptor = await descriptorFromFile(file);
     }
-  });
-  message("د "+student.name+" حاضري ثبت/تازه شوه.");
-  await loadReport();
+
+    const doc = db.collection("students").doc();
+    const photoPath = `student-photos/${doc.id}`;
+    const photoRef = storage.ref().child(photoPath);
+    await photoRef.put(file);
+    const photoURL = await photoRef.getDownloadURL();
+
+    await doc.set({
+      name, number, className, photoURL, photoPath,
+      faceConsent,
+      faceDescriptor: descriptor,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+
+    $("studentName").value = "";
+    $("studentNumber").value = "";
+    $("studentClass").value = "";
+    $("studentPhoto").value = "";
+    $("faceConsent").checked = false;
+
+    setStatus("studentMsg", `${name} په بریالیتوب ثبت شو. د کارت QR کوډ هم جوړ شو.`, "success");
+    await loadStudents();
+    await makeCards();
+  } catch (e) {
+    console.error(e);
+    setStatus("studentMsg", "ثبت ناکام شو: " + e.message, "error");
+  } finally {
+    $("addStudentBtn").disabled = false;
+  }
+};
+
+/* د زده‌کوونکو معلومات */
+async function loadStudents() {
+  try {
+    const snap = await db.collection("students").get();
+    students = snap.docs.map(d => ({id:d.id, ...d.data()}));
+    renderStudents();
+  } catch (e) {
+    console.error(e);
+    alert("د زده‌کوونکو معلومات نه لوستل کېږي. د Firebase قواعد وګوره.");
+  }
 }
 
-async function addLeave(){
-  try{
-    assertAdmin();
-    const s=students.find(x=>x.id===$("leaveStudent").value);
-    const start=$("leaveStart").value,end=$("leaveEnd").value;
-    if(!s||!start||!end||end<start)return alert("زده‌کوونکی او سمې نېټې وټاکه.");
-    await db.collection("leaves").add({
-      studentId:s.id,studentName:s.name,className:s.className,
-      type:$("leaveType").value,start,end,
-      reason:$("leaveReason").value.trim(),
-      status:"تایید شوی",
+function renderStudents() {
+  const q = $("studentSearch").value.trim().toLowerCase();
+  const list = students.filter(s =>
+    String(s.name || "").toLowerCase().includes(q) ||
+    String(s.number || "").toLowerCase().includes(q) ||
+    String(s.className || "").toLowerCase().includes(q)
+  );
+  $("studentsTable").innerHTML = list.map(s => `
+    <tr>
+      <td>${escapeHtml(s.name)}</td>
+      <td>${escapeHtml(s.number)}</td>
+      <td>${escapeHtml(s.className)}</td>
+      <td><button class="gold" data-card="${escapeHtml(s.id)}">کارت</button></td>
+    </tr>
+  `).join("");
+}
+$("studentSearch").addEventListener("input", renderStudents);
+
+$("studentsTable").addEventListener("click", async e => {
+  const btn = e.target.closest("[data-card]");
+  if (!btn) return;
+  await makeCards();
+  const card = document.querySelector(`[data-student-card="${CSS.escape(btn.dataset.card)}"]`);
+  if (card) {
+    $("printArea").querySelectorAll(".student-id-card").forEach(el => {
+      el.classList.toggle("hidden", el !== card);
+    });
+    window.print();
+    $("printArea").querySelectorAll(".student-id-card").forEach(el => el.classList.remove("hidden"));
+  }
+});
+
+/* د کارتونو جوړول */
+async function makeCards() {
+  const area = $("printArea");
+  area.innerHTML = "";
+  for (const s of students) {
+    const card = document.createElement("div");
+    card.className = "student-id-card";
+    card.dataset.studentCard = s.id;
+    card.innerHTML = `
+      <div class="student-id-header">د مکتب د زده‌کوونکي کارت</div>
+      <div class="student-id-body">
+        <img class="student-id-photo" src="${escapeHtml(s.photoURL || "")}" alt="د زده‌کوونکي عکس">
+        <div class="student-id-info">
+          <b>نوم:</b> ${escapeHtml(s.name)}<br>
+          <b>شمېره:</b> ${escapeHtml(s.number)}<br>
+          <b>ټولګی:</b> ${escapeHtml(s.className)}
+        </div>
+        <div class="student-id-qr"></div>
+      </div>
+      <div class="student-id-footer">Mokhtar School Attendance</div>
+    `;
+    area.appendChild(card);
+    new QRCode(card.querySelector(".student-id-qr"), {
+      text: "MSA:" + s.id,
+      width: 78,
+      height: 78,
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  }
+}
+$("makeCardsBtn").onclick = makeCards;
+$("printCardsBtn").onclick = async () => {
+  await makeCards();
+  window.print();
+};
+
+/* د حاضري ثبت: په یوه ورځ کې یو ځل */
+async function markAttendance(studentId, source) {
+  const s = students.find(x => x.id === studentId);
+  if (!s) throw new Error("زده‌کوونکی په سیستم کې ونه موندل شو.");
+
+  const date = today();
+  const docId = `${date}_${studentId}`;
+  const ref = db.collection("attendance").doc(docId);
+
+  return db.runTransaction(async transaction => {
+    const existing = await transaction.get(ref);
+    if (existing.exists) {
+      return {already:true, student:s, data:existing.data()};
+    }
+    const now = new Date();
+    const time = now.toLocaleTimeString("ps-AF", {
+      hour:"2-digit", minute:"2-digit", hour12:true
+    });
+    transaction.set(ref, {
+      studentId,
+      studentName:s.name,
+      studentNumber:s.number,
+      className:s.className,
+      date,
+      status:"حاضر",
+      checkIn:time,
+      source,
       createdAt:firebase.firestore.FieldValue.serverTimestamp()
     });
-    $("leaveReason").value="";
-    alert("رخصتي ثبت شوه.");
-    await loadLeaves();
-  }catch(e){alert("د رخصتۍ ستونزه: "+e.message)}
-}
-async function loadLeaves(){
-  try{
-    assertAdmin();
-    const snap=await db.collection("leaves").orderBy("start","desc").get();
-    $("leavesTable").innerHTML=snap.docs.map(d=>{
-      const x=d.data();
-      return `<tr><td>${escapeHTML(x.studentName)}</td><td>${escapeHTML(x.start)}</td>
-      <td>${escapeHTML(x.end)}</td><td>${escapeHTML(x.type)}</td>
-      <td>${escapeHTML(x.status)}</td></tr>`;
-    }).join("");
-  }catch(e){message("د رخصتیو لوستلو ستونزه: "+e.message)}
+    return {already:false, student:s, time};
+  });
 }
 
-async function loadReport(){
-  try{
-    assertAdmin();
-    const date=$("reportDate").value||today();
-    const [att,leaves]=await Promise.all([
-      db.collection("attendance").where("date","==",date).get(),
-      db.collection("leaves").where("start","<=",date).get()
-    ]);
-    const map=new Map(att.docs.map(d=>[d.data().studentId,d.data()]));
-    const leaveDocs=leaves.docs.map(d=>d.data()).filter(l=>l.end>=date);
-    const onLeave=new Set(leaveDocs.map(l=>l.studentId));
-    let present=0,absent=0,onleave=0;
-    $("reportTable").innerHTML=students.map(s=>{
-      const a=map.get(s.id);
-      let status=a?.status || (onLeave.has(s.id)?"رخصت":"غیرحاضر");
-      if(status==="حاضر")present++;
-      else if(status==="رخصت")onleave++;
-      else absent++;
-      return `<tr><td>${escapeHTML(s.name)}</td><td>${escapeHTML(s.className)}</td>
-      <td>${escapeHTML(status)}</td><td>${escapeHTML(a?.checkIn||"—")}</td>
-      <td>${escapeHTML(a?.checkOut||"—")}</td></tr>`;
-    }).join("");
-    $("reportSummary").innerHTML=`<p>نېټه: ${escapeHTML(date)} | زده‌کوونکي: ${students.length}
-    | حاضر: ${present} | غیرحاضر: ${absent} | رخصت: ${onleave}</p>`;
-  }catch(e){message("د راپور ستونزه: "+e.message)}
-}
-
-async function prepareCards(){
-  try{
-    assertAdmin();
-    const box=$("cards");box.innerHTML="";
-    for(const s of students){
-      const card=document.createElement("div");card.className="card";
-      const img=document.createElement("img");img.className="photo";img.src=s.photoURL;img.alt="عکس";
-      const title=document.createElement("h3");title.textContent=s.name;
-      const num=document.createElement("p");num.textContent="شمېره: "+s.number;
-      const cls=document.createElement("p");cls.textContent="ټولګی: "+s.className;
-      const qr=document.createElement("div");qr.className="qr";
-      card.append(img,title,num,cls,qr);box.appendChild(card);
-      new QRCode(qr,{text:s.id,width:110,height:110});
+async function handleStudentScan(studentId, source, statusId) {
+  try {
+    const result = await markAttendance(studentId, source);
+    if (result.already) {
+      setStatus(statusId, `${result.student.name} نن مخکې حاضري ثبت کړې ده.`, "error");
+      return false;
     }
-    message("کارتونه چمتو شول؛ د چاپ تڼۍ ووهه.");
-  }catch(e){alert(e.message)}
+    const name = result.student.name;
+    const message = `${name}، ستا حاضري ثبت شوه!`;
+    setStatus(statusId, message, "success");
+    announceSuccess(name, message);
+    await loadReport();
+    return true;
+  } catch (e) {
+    console.error(e);
+    setStatus(statusId, "حاضري ثبت نه شوه: " + e.message, "error");
+    return false;
+  }
 }
 
-/* اختیاري د مخ پېژندنه:
-   د زده‌کوونکو د عکسونو د descriptor محاسبه په براوزر کې کېږي.
-   descriptor په ډیټابېس کې نه ساتل کېږي. */
-async function startFace(){
-  try{
-    assertAdmin();
-    if(!window.faceapi)throw new Error("د مخ پېژندنې کتابتون نه دی پورته شوی.");
-    message("د مخ پېژندنې ماډلونه ښکته کېږي؛ انتظار وکړه.");
-    const base="https://cdn.jsdelivr.net/npm/@vladmandic/face-api@1.7.15/model/";
-    await Promise.all([
-      faceapi.nets.tinyFaceDetector.loadFromUri(base),
-      faceapi.nets.faceLandmark68Net.loadFromUri(base),
-      faceapi.nets.faceRecognitionNet.loadFromUri(base)
-    ]);
-    faceReady=true;
-    faceStream=await navigator.mediaDevices.getUserMedia({
-      video:{facingMode:"user"},audio:false
+/* QR سکینر */
+async function startQr() {
+  if (qrScanner) return;
+  try {
+    qrScanner = new Html5Qrcode("reader");
+    await qrScanner.start(
+      { facingMode:"environment" },
+      { fps:10, qrbox:{width:230,height:230} },
+      async decodedText => {
+        if (!decodedText.startsWith("MSA:")) {
+          setStatus("qrMsg", "دا د مکتب د زده‌کوونکي QR کوډ نه دی.", "error");
+          return;
+        }
+        const id = decodedText.slice(4);
+        const ok = await handleStudentScan(id, "QR", "qrMsg");
+        if (ok) {
+          // د تکراري غږ/ثبت مخنیوی: تر بریالي سکین وروسته سکینر ودروه
+          await stopQr();
+        }
+      },
+      () => {}
+    );
+    setStatus("qrMsg", "کمره فعاله ده. QR کوډ وښیه.", "success");
+  } catch (e) {
+    qrScanner = null;
+    setStatus("qrMsg", "کمره پیل نه شوه. د براوزر Camera اجازه ورکړه: " + e.message, "error");
+  }
+}
+async function stopQr() {
+  if (!qrScanner) return;
+  const old = qrScanner;
+  qrScanner = null;
+  try {
+    if (old.isScanning) await old.stop();
+    await old.clear();
+  } catch (e) { console.warn(e); }
+}
+$("startQrBtn").onclick = startQr;
+$("stopQrBtn").onclick = stopQr;
+
+/* د مخ سکن */
+$("startFaceBtn").onclick = async () => {
+  try {
+    setStatus("faceMsg", "د مخ ماډلونه پورته کېږي، لږ انتظار وکړه...");
+    await loadFaceModels();
+    faceStream = await navigator.mediaDevices.getUserMedia({
+      video:{facingMode:"user"}, audio:false
     });
-    $("faceVideo").srcObject=faceStream;
-    message("کمره فعاله ده. د مخ پرتله کولو لپاره د زده‌کوونکي مخې ته کمره ونیسه.");
-  }catch(e){message("د مخ پېژندنه نه فعالیږي: "+e.message)}
+    $("faceVideo").srcObject = faceStream;
+    await $("faceVideo").play();
+    faceLoop = true;
+    faceBusy = false;
+    setStatus("faceMsg", "د مخ سکن پیل شو. کمرې ته مخامخ وګوره.", "success");
+    faceDetectionLoop();
+  } catch (e) {
+    setStatus("faceMsg", "د مخ سکن پیل نه شو: " + e.message, "error");
+  }
+};
+
+$("stopFaceBtn").onclick = stopFace;
+function stopFace() {
+  faceLoop = false;
+  if (faceStream) faceStream.getTracks().forEach(t => t.stop());
+  faceStream = null;
+  $("faceVideo").srcObject = null;
+  setStatus("faceMsg", "د مخ سکن بند شو.");
 }
-function stopFace(){
-  if(faceStream)faceStream.getTracks().forEach(t=>t.stop());
-  faceStream=null;$("faceVideo").srcObject=null;
-}
-async function matchFace(){
-  try{
-    assertAdmin();
-    if(!faceReady||!faceStream)throw new Error("لومړی د مخ پېژندنه پیل کړه.");
-    const live=await faceapi.detectSingleFace($("faceVideo"),
-      new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor();
-    if(!live)throw new Error("مخ ونه موندل شو. رڼا ښه کړه او بیا هڅه وکړه.");
-    let best=null,bestDistance=1;
-    for(const s of students){
-      if(!s.faceConsent||!s.photoURL)continue;
-      try{
-        const img=await faceapi.fetchImage(s.photoURL);
-        const found=await faceapi.detectSingleFace(img,
-          new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptor();
-        if(!found)continue;
-        const distance=faceapi.euclideanDistance(live.descriptor,found.descriptor);
-        if(distance<bestDistance){bestDistance=distance;best=s}
-      }catch(e){}
+
+async function faceDetectionLoop() {
+  if (!faceLoop) return;
+  const video = $("faceVideo");
+  try {
+    if (video.readyState >= 2 && !faceBusy && Date.now() - lastFaceAttempt > 1800) {
+      const result = await faceapi
+        .detectSingleFace(video, new faceapi.TinyFaceDetectorOptions())
+        .withFaceLandmarks()
+        .withFaceDescriptor();
+
+      if (result) {
+        const candidates = students.filter(s =>
+          s.faceConsent === true &&
+          Array.isArray(s.faceDescriptor) &&
+          s.faceDescriptor.length === result.descriptor.length
+        );
+
+        let best = null;
+        let bestDistance = Infinity;
+        for (const s of candidates) {
+          const distance = faceapi.euclideanDistance(
+            result.descriptor,
+            new Float32Array(s.faceDescriptor)
+          );
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            best = s;
+          }
+        }
+
+        // دا حد باید د حقیقي عکسونو په ازموینه تنظیم شي؛ بشپړ تضمین نه دی.
+        if (best && bestDistance < 0.48) {
+          lastFaceAttempt = Date.now();
+          faceBusy = true;
+
+          const confirmed = window.confirm(
+            `ایا دا زده‌کوونکی ${best.name} دی؟\n` +
+            `شمېره: ${best.number}\n` +
+            `ټولګی: ${best.className}\n\n` +
+            `د حاضري د ثبت لپاره OK ووهه.`
+          );
+
+          if (confirmed) {
+            await handleStudentScan(best.id, "Face", "faceMsg");
+          } else {
+            setStatus("faceMsg", "د حاضري ثبت لغوه شو.");
+          }
+          faceBusy = false;
+        } else {
+          setStatus("faceMsg", "مخ وموندل شو، خو د ثبت شوي زده‌کوونکي سره روښانه سمون ونه موندل شو. د QR یا لاسي طریقې څخه کار واخله.");
+        }
+      } else {
+        setStatus("faceMsg", "کمرې ته مخامخ وګوره؛ مخ لا نه دی موندل شوی.");
+      }
     }
-    if(best && bestDistance<0.48){
-      candidateStudent=best;
-      $("faceResult").textContent=`احتمالي برابر: ${best.name} — ورته والی فاصلې نمره: ${bestDistance.toFixed(3)}. د انسان له خوا تایید اړین دی.`;
-      $("confirmFaceBtn").classList.remove("hidden");
-    }else{
-      candidateStudent=null;$("confirmFaceBtn").classList.add("hidden");
-      $("faceResult").textContent="معتبره ورته پایله ونه موندل شوه. QR وکاروه یا زده‌کوونکی په لاس وټاکه.";
-    }
-  }catch(e){$("faceResult").textContent=e.message}
+  } catch (e) {
+    console.error(e);
+    faceBusy = false;
+  }
+  if (faceLoop) setTimeout(faceDetectionLoop, 700);
 }
-async function confirmFaceAttendance(){
-  if(!candidateStudent)return;
-  const s=candidateStudent;
-  if(!confirm("ایا دا په رښتیا "+s.name+" دی؟"))return;
-  try{
-    await markAttendance(s.id);
-    $("faceResult").textContent="حاضري ثبت شوه.";
-    $("confirmFaceBtn").classList.add("hidden");
-    candidateStudent=null;
-  }catch(e){alert(e.message)}
+
+/* د ورځې راپور */
+async function loadReport() {
+  const date = $("reportDate").value || today();
+  try {
+    const snap = await db.collection("attendance")
+      .where("date", "==", date)
+      .get();
+    reportRows = snap.docs.map(d => ({id:d.id, ...d.data()}));
+    reportRows.sort((a,b) => String(a.studentName || "").localeCompare(String(b.studentName || "")));
+
+    $("attendanceTable").innerHTML = reportRows.map(r => `
+      <tr>
+        <td>${escapeHtml(r.studentName)}</td>
+        <td>${escapeHtml(r.studentNumber || "")}</td>
+        <td>${escapeHtml(r.className)}</td>
+        <td>${escapeHtml(r.checkIn || "")}</td>
+        <td>${escapeHtml(r.source || "")}</td>
+        <td>${escapeHtml(r.status || "حاضر")}</td>
+      </tr>
+    `).join("");
+
+    const total = students.length;
+    const present = reportRows.length;
+    const absent = Math.max(0,total-present);
+    $("reportSummary").textContent =
+      `نېټه: ${date}\nټول ثبت شوي زده‌کوونکي: ${total}\nحاضر: ${present}\nغیر حاضر: ${absent}`;
+  } catch (e) {
+    console.error(e);
+    setStatus("reportSummary", "راپور نه لوستل کېږي: " + e.message, "error");
+  }
 }
+$("reportBtn").onclick = loadReport;
+$("reportDate").addEventListener("change", loadReport);
+
+$("csvBtn").onclick = () => {
+  const rows = [
+    ["نوم","شمېره","ټولګی","نېټه","وخت","طریقه","حالت"],
+    ...reportRows.map(r => [
+      r.studentName || "", r.studentNumber || "", r.className || "",
+      r.date || "", r.checkIn || "", r.source || "", r.status || ""
+    ])
+  ];
+  const csv = "\uFEFF" + rows.map(row =>
+    row.map(value => `"${String(value).replace(/"/g,'""')}"`).join(",")
+  ).join("\r\n");
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `attendance-${$("reportDate").value || today()}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+};
 </script>
 </body>
 </html>
